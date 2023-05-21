@@ -1,5 +1,6 @@
 package mainProcess;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,13 +12,13 @@ public class Main {
 		String rutaProm = "";
 		String rutaAtracc = "";
 		String rutaSalida = ""; 
-		
+		ArrayList<Usuario> usuarios;
+		ArrayList<Recomendacion> recomendaciones;
 		try {
 			
 		
-			ArrayList<Usuario> usuarios = Archivo.cargarArchUsuarios(rutaUser); //metodo estatico clase Archivo
-			ArrayList<Atraccion> atracciones = Archivo.cargarArchAtracciones(rutaAtracc);
-			ArrayList<Promocion> promociones = Archivo.cargarArcPromociones(rutaProm);
+			usuarios = Archivo.cargarArchUsuarios(rutaUser); //metodo estatico clase Archivo
+			recomendaciones = Archivo.cargarRecomendaciones(rutaAtracc, rutaProm);
 			
 			File f2 = new FileWriter(rutaSalida);
 			PrintWritter printerWriter = new PrintWriter(f2);
@@ -27,7 +28,8 @@ public class Main {
 			System.exit(-1);
 		}
 		
-		
+		int cantidadAOrdenar = recomendaciones.size()/4;
+		int ultimaPosOrdenada = 0;
 		
 		System.out.println("\t Bienvenido/a al universo de Dragon Ball Z");
 		System.out.println("-----------------------------------------------------------------------------");
@@ -36,63 +38,39 @@ public class Main {
 			
 			System.out.println("Nombre de visitante: "+ usuarioActual.getNombre());
 			
+			Recomendacion.ordenar(recomendaciones,ultimaPosOrdenada, ultimaPosOrdenada + cantidadAOrdenar); //no ordena todo la lista, sino desde 0(inclusivo) hasta la "n"(exclusivo)
+			ultimaPosOrdenada+= cantidadAOrdenar;
 			
-			promociones.ordenar(usuarioActual.getPref());
-			atracciones.ordenar(usuarioActual.getPref());
-			
-			
-			for(Promocion promActual: promociones) {
-				if(usuarioActual.puedeComprar(promActual,atracciones)) {
-					System.out.println(promoActual); //sobreescribimos metodo to_string
+			int i = 0;
+			for(Recomendacion recomActual: recomendaciones) {
+				if(i == ultimaPosOrdenada) {
+					Recomendacion.ordenar(recomendaciones,ultimaPosOrdenada, ultimaPosOrdenada + cantidadAOrdenar); //no ordena todo la lista, sino desde 0(inclusivo) hasta la "n"(exclusivo)
+					ultimaPosOrdenada+= cantidadAOrdenar;
+				}
+				
+				if(usuarioActual.puedeComprar(recomActual)) {
+					System.out.println(recomActual); //usando to_string
 					
-					do {
-						
-						System.out.println("Acepta sugerencia? Ingrese S o N: ");
-						
-						Scanner entradaTecl = new Scanner(System.in);
-						String opcion = entradaTecl.nextLine();
-						opcion = opcion.toUpperCase();
-						
-					}while(!opcion.equals("S") && !opcion.equals("N")); 
+					String respuesta = ObtenerRespuestaValida();
 					
-					if(opcion.equals("S")) {
-						usuarioActual.comprar(promoActual,atracciones); // actualiza atracciones y el usuarioActual
+					if(respuesta.equals("S")) {
+						usuarioActual.comprar(recomActual); //entre otras cosas, comprar deberia agregar a un set el nombre de las atracciones compradas, decrementar el saldo disponible e incrementar el saldo gastado
 					}
 					System.out.println("-----------------------------------------------------------------------------");
+					++i;
+					
 				}
 				
 			}
-			
-			for(int i =0; i<atracciones.size();i++) { // hay que actualizar constantemente la lista de atracciones
-				if(usuarioActual.puedeComprar(atracciones.get(i))) {
-					System.out.println(atracciones.get(i));
-					
-					do {
-						System.out.println("Acepta sugerencia? Ingrese S o N: ");
-						
-						Scanner entradaTecl = new Scanner(System.in);
-						String opcion = entradaTecl.nextLine();
-						opcion = opcion.toUpperCase();
-						
-					}while(!opcion.equals("S") && !opcion.equals("N")); 
-					
-					if(opcion.equals("S")) {
-						atracciones.get(i) = usuarioActual.comprar(atracciones.get(i)); // actualiza atracciones y el usuarioActual
-					}	
-					
-					System.out.println("-----------------------------------------------------------------------------");
-				}
-				
-				
-			}
+			ActualizarCupos(recomendaciones, usuarioActual.getAtraccionesCompradas());
 			
 			//muestro por consola
-			System.out.println("Gasto total: ", usuarioActual.getGastoTotal);
-			System.out.println("Atracciones compradas: ", usuarioActual.mostrarAtraccionesComapradas));
+			System.out.println("Gasto total: ", usuarioActual.getGastoTotal());
+			System.out.println("Atracciones compradas: ", usuarioActual.mostrarAtraccionesComapradas());
 			
 			//cargo en el archivo .out
-			printerWriter.println("Gasto total: ", usuarioActual.getGastoTotal);
-			printerWriter.println("Atracciones compradas: ", usuarioActual.mostrarAtraccionesComapradas));
+			printerWriter.println("Gasto total: ", usuarioActual.getGastoTotal());
+			printerWriter.println("Atracciones compradas: ", usuarioActual.mostrarAtraccionesComapradas());
 				
 				
 			
@@ -100,7 +78,7 @@ public class Main {
 		}
 		
 		printerWriter.close();
-		//prueba pull
+		
 		
 	}
 }
