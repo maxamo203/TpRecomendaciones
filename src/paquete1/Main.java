@@ -29,35 +29,31 @@ public class Main {
 		}
 		
 		int cantidadAOrdenar = recomendaciones.size()/4;
-		int ultimaPosOrdenada = 0;
+		int ultimaPosOrdenada;
 		
 		System.out.println("\t Bienvenido/a al universo de Dragon Ball Z");
 		System.out.println("-----------------------------------------------------------------------------");
 		
 		for(Usuario usuarioActual: usuarios) {
-			
+			ultimaPosOrdenada = 0;
 			System.out.println("Nombre de visitante: "+ usuarioActual.getNombre());
 			
-			Recomendacion.ordenar(recomendaciones,ultimaPosOrdenada, ultimaPosOrdenada + cantidadAOrdenar); //no ordena todo la lista, sino desde 0(inclusivo) hasta la "n"(exclusivo)
-			ultimaPosOrdenada+= cantidadAOrdenar;
 			
-			int i = 0;
-			for(Recomendacion recomActual: recomendaciones) {
+			for(int i = 0;i< recomendaciones.size();i++) {
 				if(i == ultimaPosOrdenada) {
-					Recomendacion.ordenar(recomendaciones,ultimaPosOrdenada, ultimaPosOrdenada + cantidadAOrdenar); //no ordena todo la lista, sino desde 0(inclusivo) hasta la "n"(exclusivo)
+					Recomendacion.ordenar(recomendaciones,ultimaPosOrdenada, ultimaPosOrdenada + cantidadAOrdenar, usuarioActual.getPreferencia()); //no ordena todo la lista, sino desde 0(inclusivo) hasta la "n"(exclusivo)
 					ultimaPosOrdenada+= cantidadAOrdenar;
 				}
 				
-				if(usuarioActual.puedeComprar(recomActual)) {
-					System.out.println(recomActual); //usando to_string
+				if(usuarioActual.puedeComprar(recomendaciones.get(i))) {
+					System.out.println(recomendaciones.get(i)); //usando to_string
 					
 					String respuesta = ObtenerRespuestaValida();
 					
 					if(respuesta.equals("S")) {
-						usuarioActual.comprar(recomActual); //entre otras cosas, comprar deberia agregar a un set el nombre de las atracciones compradas, decrementar el saldo disponible e incrementar el saldo gastado
+						usuarioActual.comprar(recomendaciones.get(i)); //entre otras cosas, comprar deberia agregar a un set el nombre de las atracciones compradas, decrementar el saldo disponible e incrementar el saldo gastado
 					}
 					System.out.println("-----------------------------------------------------------------------------");
-					++i;
 					
 				}
 				
