@@ -97,6 +97,7 @@ public class Archive {
 					scanner.next();
 					Attraction = scanner.next();
 				}
+				
 				else if(charType == 'B') {
 					double price = scanner.nextInt();
 					String StringPreferency = scanner.next();

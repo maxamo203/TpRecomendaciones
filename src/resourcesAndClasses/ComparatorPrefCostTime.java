@@ -29,11 +29,7 @@ public class ComparatorPrefCostTime implements Comparator<OfferdableItem>{
 		
 		if(cmp == 0) {
 			cmp = Double.compare(o2.time, o1.time);
-		}
-		
-		
+		}		
 		return cmp;
-		
 	}
-
 }
