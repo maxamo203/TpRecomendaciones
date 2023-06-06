@@ -1,17 +1,19 @@
 package resourcesAndClasses;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Archive {
-	Scanner scanner = null;
+	static Scanner scanner = null;
 	
 	public Archive() {}
 	
 	//READ THE ATTRACTION LIST
-	public ArrayList<Sight> ReadSights(String path){
+	public static ArrayList<Sight> ReadSights(String path){
 		ArrayList<Sight> MyAtraccionList = new ArrayList<Sight>();
 		try {
 			File file = new File(path);
@@ -41,7 +43,7 @@ public class Archive {
 		return MyAtraccionList;
 	}
 	
-	public ArrayList<User> ReadUsers(String path){
+	public static ArrayList<User> ReadUsers(String path){
 		ArrayList<User> MyUserList = new ArrayList<User>();
 		
 		try {
@@ -72,7 +74,7 @@ public class Archive {
 		return MyUserList;
 	}
 
-	public ArrayList<Promotion> ReadPromotion(String path, ArrayList<Sight> MyAtraccionList){
+	public static ArrayList<Promotion> ReadPromotion(String path, ArrayList<Sight> MyAtraccionList){
 		ArrayList<Promotion> MyPromotionList = new ArrayList<Promotion>();
 		
 		try {
@@ -139,5 +141,21 @@ public class Archive {
 			scanner.close();
 		}
 		return MyPromotionList;
+	}
+	
+	public static void cargarArchivoSalida(ArrayList<User> misUsuarios,String rutaSalida) {
+		File archivo = new File(rutaSalida);
+		try {
+			PrintWriter salida = new PrintWriter(archivo);
+			
+			for(int i = 0; i<misUsuarios.size();i++) {
+				salida.print("\n(!)Datos del usuario "+misUsuarios.get(i).getName()+" "+misUsuarios.get(i).getStrMySights() +" Dinero gastado: "+misUsuarios.get(i).getSpentMoney() +" Tiempo invertido: "+misUsuarios.get(i).getSpentTime() +"\n");
+				
+			}
+			
+			salida.close();
+		}catch(FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }
