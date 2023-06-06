@@ -71,6 +71,21 @@ public class User {
 		this.spentMoney -= discount;
 	}
 	
+	public void addAttraction(Sight s)
+	{
+		this.myList.add(s);
+	}
+	
+	public void setSpentTime(double a)
+	{
+		this.spentTime = a;
+	}
+	
+	public void setSpentMoney(int a)
+	{
+		this.spentMoney = a;
+	}
+	
 	public boolean alreadyBought(Sight s) {
 		for(Sight s2: this.myList) {
 			if(s.equals(s2)) {
