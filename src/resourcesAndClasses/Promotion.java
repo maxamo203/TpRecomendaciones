@@ -1,6 +1,7 @@
 package resourcesAndClasses;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Promotion extends OfferdableItem{
 	
@@ -66,6 +67,25 @@ public abstract class Promotion extends OfferdableItem{
 		return s;
 	}
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(mySights);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Promotion other = (Promotion) obj;
+		return Objects.equals(mySights, other.mySights);
+	}
+
+
 	@Override
 	public String toString() {
 		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+ "\n*Precio original = $" + cost +"\n*Precio con descuento = $"+ (this.cost-this.getDiscount()) +"\n*Duracion = " + time+" horas";

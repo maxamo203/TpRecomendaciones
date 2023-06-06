@@ -32,7 +32,6 @@ public class ArchiveTest {
 		miListaDeAtracciones.add(miAtraccion8);
 		
 		ArrayList<Sight> myAtraccionList = atracciones.ReadSights("archiveTemporal/Atracciones.in");
-		System.out.println(myAtraccionList);
 		Assert.assertEquals(miListaDeAtracciones, myAtraccionList);	
 	}
 	

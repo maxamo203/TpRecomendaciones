@@ -22,7 +22,6 @@ public class InterfazUsuario {
 			misOfferdables.addAll(misAtracciones);
 			misOfferdables.addAll(misPromociones);
 			char opcion;
-			System.out.println(misOfferdables);
 			
 			try (Scanner teclado = new Scanner(System.in)) {
 				for(int i =0; i<misUsuarios.size();i++) {
