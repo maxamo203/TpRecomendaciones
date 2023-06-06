@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class User {
 	private String name;
-	private int money;
+	private double money;
 	private double time;
 	private Preferency myPref;
 	
 	private ArrayList<Sight>myList;
 	
-	private int spentMoney;
+	private double spentMoney;
 	private double spentTime;
 	
-	public User(String name, int money, double time, Preferency myPref) {
+	public User(String name, double money, double time, Preferency myPref) {
 		this.name = name;
 		this.money = money;
 		this.time = time;
@@ -32,7 +32,7 @@ public class User {
 		this.myList.add(ent);
 	}
 	
-	public int getMoney() {
+	public double getMoney() {
 		return this.money;
 	}
 	
@@ -44,7 +44,7 @@ public class User {
 		return this.myPref;
 	}
 	
-	public int getSpentMoney() {
+	public double getSpentMoney() {
 		return this.spentMoney;
 	}
 	
@@ -56,12 +56,12 @@ public class User {
 		return this.name;
 	}
 	
-	public void makeDiscount(int discount) {
+	public void makeDiscount(double discount) {
 		this.money += discount;
 		this.spentMoney -= discount;
 	}
 	
-	public String getMySights() {
+	public String getStrMySights() {
 		String myListNames="Atracciones Compradas: ";
 		for(Sight s:this.myList) {
 			myListNames+=s.getName()+" ";

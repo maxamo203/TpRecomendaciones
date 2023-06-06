@@ -2,145 +2,76 @@ package resourcesAndClasses;
 
 import java.util.ArrayList;
 
-public class Promotion implements Offerdable,Comparable<Promotion> {
+public abstract class Promotion extends OfferdableItem{
 	
 	
-	private ArrayList<Sight>mySights;
-	private Preferency type;
-	
-	private int totalCost;
-	private double totalTime;
-	private boolean costFlag;
-	private boolean timeFlag;
-	
-	// en vez de heredar podemos añadir estos atributos a la clase promotion
-	private double percentual;
-	private int absolute;
-	private ArrayList<Sight>free;
-	
+	protected ArrayList<Sight>mySights;
+
 	
 	public Promotion(Preferency type) {
-		this.type= type;
+		super(type);
 		this.mySights = new ArrayList<Sight>();
-		this.percentual=0;
-		this.absolute=0;
-		this.free=new ArrayList<Sight>();
-		this.totalCost=0;
-		this.totalTime=0;
-		this.costFlag = false;
-		this.timeFlag = false;
+		this.cost = 0;
+		this.time = 0;
 	}
 	
-	
-	public void setPercentual(double percentual) {
-		this.percentual = percentual;
-	}
-	public void setAbsolute(int abs) {
-		this.absolute=abs;
-	}
-	public void addFreeSight(Sight s) {
-		this.free.add(s);
-	}
 	
 	public void loadSight(String sightName, ArrayList<Sight> sights) {
 		for(Sight s : sights) {
-			if(s.getName() == sightName) {
+			if(s.getName().equals(sightName)) {
 				this.mySights.add(s);
+				this.cost+=s.getCost();
+				this.time+=s.getTime();
 				break;
 			}
 		}
 	}
 	
-	
-	public int getTotalCost() {
-		if(this.costFlag == false) {
-			this.calculateTotalCost();
-			this.costFlag = true;
-		}
-		return this.totalCost;
-		
-	}
-	
-	private void calculateTotalCost() {
-		int totalCost = 0;
-		for(Sight s: this.mySights) {
-			totalCost+=s.getCost();
-		}
-		
-		this.totalCost = totalCost - this.getDiscount();
-		
-	}
-	
-	public double getTotalTime() {
-		if(this.timeFlag == false) {
-			this.calculateTotalTime();
-			this.timeFlag = true;
-		}
-		return this.totalTime;
-	}
-	
-	private void calculateTotalTime() {
-		double totalTime=0;
-		for(Sight s:  this.mySights) {
-			totalTime+= s.getTime();
-		}
-		this.totalTime = totalTime;
-	}
 
-	public int getDiscount() {
-		if(this.absolute != 0) {
-			return this.absolute;
-		}
-		if(this.percentual != 0) {
-			return (int) (this.getTotalCost() *(this.percentual/10));
-		}
-		
-		int freeSightsCost = 0;
-		for(Sight s : this.free) {
-			freeSightsCost += s.getCost();
-		}
-		return freeSightsCost;
-		
+	public abstract double getDiscount();
+	
+	
+	public double getCostWithDiscount() {
+		return this.getCost()-this.getDiscount();
 	}
 	
-	public boolean canBuy(User u) {
+	
+	public boolean canBeBoughtBy(User u) {
 		boolean ret = false;
-		if(this.getTotalCost()<=u.getMoney() && this.getTotalTime()<=u.getTime() && this.quotaValidation()) {
+		if(this.getCostWithDiscount()<=u.getMoney() && this.getTime()<=u.getTime() && this.sightValidation(u) ) {
 			ret = true;
 		}
 		return ret;
 	}
 	
-	private boolean quotaValidation() {
+	private boolean sightValidation(User u) { //validates quota and alreadyBought parameters
 		for(Sight s: this.mySights) {
-			if(s.getQuota()==0) {
+			if(s.getQuota()==0 || u.alreadyBought(s)) {
 				return false;
 			}
 		}
 		return true;
 	}
 	
-	public void buy(User u) {
+	public void boughtBy(User u) {
 		for(Sight s: this.mySights) {
-			s.buy(u);
+			s.boughtBy(u);
 		}
 		u.makeDiscount(this.getDiscount());
 	}
 	
-	public Preferency getType() {
-		return this.type;
-	}
-
-
-	@Override
-	
-	public int compareTo(Promotion o) {
-		int cmp = this.getTotalCost() - o.getTotalCost();
-		if(cmp == 0) {
-			cmp = Double.compare(this.getTotalTime(), o.getTotalTime());
+	protected String getStrMySights() {
+		String s="";
+		for(Sight s2: this.mySights) {
+			s+= s2.getName() + " ";
 		}
-		return cmp;
+		return s;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+ "\n*Precio original = $" + cost +"\n*Precio con descuento = $"+ (this.cost-this.getDiscount()) +"\n*Duracion = " + time+" horas";
+	}
+
 }
+
