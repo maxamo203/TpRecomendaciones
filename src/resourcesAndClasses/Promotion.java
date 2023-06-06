@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Promotion extends OfferdableItem{
 	
-	
 	protected ArrayList<Sight>mySights;
-
 	
 	public Promotion(Preferency type) {
 		super(type);

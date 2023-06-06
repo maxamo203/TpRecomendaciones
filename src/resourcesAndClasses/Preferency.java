@@ -7,7 +7,6 @@ public enum Preferency {
 	ACADEMICO,
 	CONQUISTA;
 	
-	
 	@Override
 	public String toString() {
 	    switch (this) {

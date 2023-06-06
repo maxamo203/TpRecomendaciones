@@ -36,7 +36,6 @@ public class PromotionFreeSights extends Promotion {
 		return s;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+"\n*Atracciones Gratuitas = "+this.getStrMyFreeSights()+ "\n*Precio original = $" + cost +"\n*Precio con descuento = $"+ (this.cost-this.getDiscount()) +"\n*Duracion = " + time + "horas";
