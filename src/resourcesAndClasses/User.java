@@ -1,8 +1,8 @@
 package resourcesAndClasses;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+//import java.util.ArrayList;
+//import java.util.Collection;
+//import java.util.Collections;
 import java.util.Objects;
 import java.util.TreeSet;
 
@@ -16,6 +16,9 @@ public class User {
 	private TreeSet<OfferdableItem>myList;
 	
 	private double spentMoney;
+	private double savedMoney;
+	
+
 	private double spentTime;
 	private TreeSet<Sight> mySights;
 
@@ -26,6 +29,7 @@ public class User {
 		this.myPref = myPref;
 		
 		this.spentMoney =0; 
+		this.savedMoney = 0;
 		this.spentTime = 0;
 		this.myList = new TreeSet<OfferdableItem>();
 		this.mySights = new TreeSet<Sight>();
@@ -36,6 +40,7 @@ public class User {
 		this.spentMoney+=ent.getCost();
 		this.time-=ent.getTime();
 		this.spentTime+=ent.getTime();
+		this.savedMoney += ent.getDiscount();
 		this.myList.add(ent);
 		this.mySights.addAll(ent.getSights());
 		
@@ -48,7 +53,9 @@ public class User {
 	public double getTime() {
 		return this.time;
 	}
-	
+	public double getSavedMoney() {
+		return savedMoney;
+	}
 	public Preferency getPref() {
 		return this.myPref;
 	}

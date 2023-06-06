@@ -28,7 +28,7 @@ public abstract class Promotion extends OfferdableItem{
 	}
 	
 
-	public abstract double getDiscount();
+	
 	
 	@Override
 	public int getQuota() {

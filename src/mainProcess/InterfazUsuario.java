@@ -59,6 +59,9 @@ public class InterfazUsuario {
 			for(OfferdableItem i: user.getSights()) {
 				salida += i.stringParaUsuario() + "\n";
 			}
+			salida += String.format("---------\nEn total gasto: $%.2f\n"
+					+ "El tiempo total de las atracciones es: %.2f horas\n"
+					+ "En total se ahorró $%.2f\n", user.getSpentMoney(),user.getSpentTime(),user.getSavedMoney());
 			salida += "----------------------------------------------------------------------------\n";
 			return salida;
 			

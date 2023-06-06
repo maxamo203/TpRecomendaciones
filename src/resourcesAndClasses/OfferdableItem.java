@@ -24,6 +24,9 @@ public abstract class OfferdableItem implements Comparable<OfferdableItem>{
 	}
 	public abstract int getQuota();
 	
+	public double getDiscount() { //Para Sight va a ser siempre 0 y para Proption va a ser lo que sobreescriba
+		return 0;
+	}
 	
 	public static int comparar(OfferdableItem o1, OfferdableItem o2, Preferency myPreferency) {
 		if(o1.type == myPreferency && o2.type !=myPreferency) {
