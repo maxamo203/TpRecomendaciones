@@ -21,8 +21,6 @@ public abstract class OfferdableItem {
 		return this.time;
 	}
 	
-	
-
 	public abstract boolean canBeBoughtBy(User u);
 	
 	public abstract void boughtBy(User u);
