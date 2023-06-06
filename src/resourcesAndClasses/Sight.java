@@ -1,6 +1,7 @@
 package resourcesAndClasses;
 
 import java.util.Objects;
+import java.util.TreeSet;
 
 public class Sight extends OfferdableItem{
 	private String name;
@@ -27,7 +28,7 @@ public class Sight extends OfferdableItem{
 
 	@Override
 	public void boughtBy(User u) {
-		this.quota--;
+		decreaseQuota();
 		u.update(this);
 		// for now this is not defined but its very probably that User will have an ArrayList of OfferdableItems inside
 	}
@@ -39,7 +40,9 @@ public class Sight extends OfferdableItem{
 	public int getQuota() {
 		return this.quota;
 	}
-
+	public void decreaseQuota() {
+		--this.quota;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(cost, name, quota, time, type);
@@ -68,5 +71,12 @@ public class Sight extends OfferdableItem{
 		
 		return "Atraccion\n*Nombre = " + name + "\n*Tipo = " + type + "\n*Precio = $" + cost + ",\n*Duracion = " + time+" horas\n" + 
 		"---------";
+	}
+
+	@Override
+	public TreeSet<Sight> getSights() {
+		TreeSet<Sight> sight = new TreeSet<Sight>();
+		sight.add(this);
+		return sight;
 	}
 }

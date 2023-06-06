@@ -2,6 +2,7 @@ package resourcesAndClasses;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.TreeSet;
 
 public abstract class Promotion extends OfferdableItem{
 	
@@ -68,8 +69,9 @@ public abstract class Promotion extends OfferdableItem{
 	@Override
 	public void boughtBy(User u) {
 		for(Sight s: this.mySights) {
-			s.boughtBy(u);
+			s.decreaseQuota();
 		}
+		u.update(this);
 		u.makeDiscount(this.getDiscount());
 	}
 	
@@ -110,6 +112,11 @@ public abstract class Promotion extends OfferdableItem{
 		
 		return this.toString() + "\n---------";
 	}
-
+	@Override
+	public TreeSet<Sight> getSights(){
+		TreeSet<Sight> sight = new TreeSet<Sight>();
+		sight.addAll(mySights);
+		return sight;
+	}
 }
 

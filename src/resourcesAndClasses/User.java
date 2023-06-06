@@ -1,6 +1,8 @@
 package resourcesAndClasses;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.TreeSet;
 
@@ -15,6 +17,7 @@ public class User {
 	
 	private double spentMoney;
 	private double spentTime;
+	private TreeSet<Sight> mySights;
 
 	public User(String name, double money, double time, Preferency myPref) {
 		this.name = name;
@@ -25,6 +28,7 @@ public class User {
 		this.spentMoney =0; 
 		this.spentTime = 0;
 		this.myList = new TreeSet<OfferdableItem>();
+		this.mySights = new TreeSet<Sight>();
 	}
 
 	public void update(OfferdableItem ent) {
@@ -33,6 +37,7 @@ public class User {
 		this.time-=ent.getTime();
 		this.spentTime+=ent.getTime();
 		this.myList.add(ent);
+		this.mySights.addAll(ent.getSights());
 		
 	}
 	
@@ -81,12 +86,14 @@ public class User {
 //				return true;
 //			}
 //		}
-		try {
-			
-			return myList.contains(s);
-		}catch(ClassCastException e) {
-			return false;
-		}
+		TreeSet<OfferdableItem> aux = new TreeSet<OfferdableItem>(mySights);
+		aux.retainAll(s.getSights());
+		return !aux.isEmpty();
+//		try {
+//			
+//		}catch(ClassCastException e) {
+//			return false;
+//		}
 	}
 
 	@Override

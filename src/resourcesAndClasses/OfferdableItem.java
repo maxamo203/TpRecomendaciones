@@ -1,5 +1,7 @@
 package resourcesAndClasses;
 
+import java.util.TreeSet;
+
 public abstract class OfferdableItem implements Comparable<OfferdableItem>{
 	protected Preferency type;
 	protected double cost;
@@ -51,7 +53,7 @@ public abstract class OfferdableItem implements Comparable<OfferdableItem>{
 	@Override
 	public int compareTo(OfferdableItem o2) {
 		
-		int cmp = this.getType().toString().compareTo( o2.getType().toString());
+		int cmp = this.getType().ordinal()- o2.getType().ordinal();
 		if(cmp != 0)
 			return cmp;
 		
@@ -76,4 +78,5 @@ public abstract class OfferdableItem implements Comparable<OfferdableItem>{
 	public abstract boolean canBeBoughtBy(User u);
 	
 	public abstract void boughtBy(User u);
+	public abstract TreeSet<Sight> getSights();
 }
