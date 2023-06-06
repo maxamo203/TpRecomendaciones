@@ -1,8 +1,92 @@
-
-(!)Datos del usuario GOKU Atracciones Compradas: Marte Inframundo Tierra UNLAM  Dinero gastado: 1400.0 Tiempo invertido: 4.0
-
-(!)Datos del usuario VEGETTA Atracciones Compradas: Tierra UNLAM Inframundo Universo6  Dinero gastado: 1600.0 Tiempo invertido: 4.0
-
-(!)Datos del usuario TRUNKS Atracciones Compradas: TacosDelTioNacho Vegita Inframundo Universo6 Tierra  Dinero gastado: 1900.0 Tiempo invertido: 5.0
-
-(!)Datos del usuario PICCOLO Atracciones Compradas: Tierra UNLAM TacosDelTioNacho Vegita  Dinero gastado: 800.0 Tiempo invertido: 4.0
+GOKU compró:
+----------------------------------------------------------------------------
+VEGETTA compró:
+Atraccion
+*Nombre = Vegita
+*Tipo = Banquete!
+*Precio = $200.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Namekusei
+*Tipo = Combate!
+*Precio = $200.0,
+*Duracion = 1.0 horas
+---------
+----------------------------------------------------------------------------
+TRUNKS compró:
+Atraccion
+*Nombre = UNLAM
+*Tipo = Academico!
+*Precio = $400.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = TacosDelTioNacho
+*Tipo = Banquete!
+*Precio = $300.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Vegita
+*Tipo = Banquete!
+*Precio = $200.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Inframundo
+*Tipo = Combate!
+*Precio = $700.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Marte
+*Tipo = Combate!
+*Precio = $500.0,
+*Duracion = 1.0 horas
+---------
+----------------------------------------------------------------------------
+PICCOLO compró:
+Atraccion
+*Nombre = UNLAM
+*Tipo = Academico!
+*Precio = $400.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Tierra
+*Tipo = Academico!
+*Precio = $300.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = TacosDelTioNacho
+*Tipo = Banquete!
+*Precio = $300.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Vegita
+*Tipo = Banquete!
+*Precio = $200.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Inframundo
+*Tipo = Combate!
+*Precio = $700.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Marte
+*Tipo = Combate!
+*Precio = $500.0,
+*Duracion = 1.0 horas
+---------
+Atraccion
+*Nombre = Namekusei
+*Tipo = Combate!
+*Precio = $200.0,
+*Duracion = 1.0 horas
+---------
+----------------------------------------------------------------------------

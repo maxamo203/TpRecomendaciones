@@ -29,6 +29,20 @@ public abstract class Promotion extends OfferdableItem{
 
 	public abstract double getDiscount();
 	
+	@Override
+	public int getQuota() {
+		int min = 0;
+		boolean flag = false;
+		for(Sight s: mySights) {
+			if(!flag)
+				min = s.getQuota();
+			else {
+				if(s.getQuota()< min)
+					min = s.getQuota();
+			}
+		}
+		return min;
+	}
 	
 	public double getCostWithDiscount() {
 		return this.getCost()-this.getDiscount();
@@ -44,14 +58,14 @@ public abstract class Promotion extends OfferdableItem{
 	}
 	
 	private boolean sightValidation(User u) { //validates quota and alreadyBought parameters
-		for(Sight s: this.mySights) {
+		for(OfferdableItem s: this.mySights) {
 			if(s.getQuota()==0 || u.alreadyBought(s)) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+	@Override
 	public void boughtBy(User u) {
 		for(Sight s: this.mySights) {
 			s.boughtBy(u);
@@ -89,6 +103,12 @@ public abstract class Promotion extends OfferdableItem{
 	@Override
 	public String toString() {
 		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+ "\n*Precio original = $" + cost +"\n*Precio con descuento = $"+ (this.cost-this.getDiscount()) +"\n*Duracion = " + time+" horas";
+	}
+	
+	@Override
+	public String stringParaUsuario() {
+		
+		return this.toString() + "\n---------";
 	}
 
 }

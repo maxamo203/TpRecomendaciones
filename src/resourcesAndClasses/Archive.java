@@ -143,14 +143,14 @@ public class Archive {
 		return MyPromotionList;
 	}
 	
-	public static void cargarArchivoSalida(ArrayList<User> misUsuarios,String rutaSalida) {
+	public static void cargarArchivoSalida(String[] salidas,String rutaSalida) {
 		File archivo = new File(rutaSalida);
 		try {
 			PrintWriter salida = new PrintWriter(archivo);
 			
-			for(int i = 0; i<misUsuarios.size();i++) {
-				salida.print("\n(!)Datos del usuario "+misUsuarios.get(i).getName()+" "+misUsuarios.get(i).getStrMySights() +" Dinero gastado: "+misUsuarios.get(i).getSpentMoney() +" Tiempo invertido: "+misUsuarios.get(i).getSpentTime() +"\n");
-				
+			for(int i = 0; i<salidas.length;i++) {
+				//salida.print("\n(!)Datos del usuario "+misUsuarios.get(i).getName()+" "+misUsuarios.get(i).getStrMySights() +" Dinero gastado: "+misUsuarios.get(i).getSpentMoney() +" Tiempo invertido: "+misUsuarios.get(i).getSpentTime() +"\n");
+				salida.print(salidas[i]);
 			}
 			
 			salida.close();

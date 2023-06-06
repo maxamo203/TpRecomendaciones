@@ -2,6 +2,7 @@ package resourcesAndClasses;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.TreeSet;
 
 public class User {
 
@@ -10,7 +11,7 @@ public class User {
 	private double time;
 	private Preferency myPref;
 	
-	private ArrayList<Sight>myList;
+	private TreeSet<OfferdableItem>myList;
 	
 	private double spentMoney;
 	private double spentTime;
@@ -23,15 +24,16 @@ public class User {
 		
 		this.spentMoney =0; 
 		this.spentTime = 0;
-		this.myList = new ArrayList<Sight>();
+		this.myList = new TreeSet<OfferdableItem>();
 	}
 
-	public void update(Sight ent) {
+	public void update(OfferdableItem ent) {
 		this.money -= ent.getCost();
 		this.spentMoney+=ent.getCost();
 		this.time-=ent.getTime();
 		this.spentTime+=ent.getTime();
 		this.myList.add(ent);
+		
 	}
 	
 	public double getMoney() {
@@ -58,12 +60,14 @@ public class User {
 		return this.name;
 	}
 	
-	public String getStrMySights() {
-		String myListNames="Atracciones Compradas: ";
-		for(Sight s:this.myList) {
-			myListNames+=s.getName()+" ";
-		}
-		return myListNames;
+	public TreeSet<OfferdableItem> getSights() {
+//		String myListNames="Atracciones Compradas: ";
+//		for(OfferdableItem s:this.myList) {
+//			myListNames+=s.getName()+" ";
+//		}
+		//return myListNames;
+		
+		return myList;
 	}
 	
 	public void makeDiscount(double discount) {
@@ -71,13 +75,18 @@ public class User {
 		this.spentMoney -= discount;
 	}
 	
-	public boolean alreadyBought(Sight s) {
-		for(Sight s2: this.myList) {
-			if(s.equals(s2)) {
-				return true;
-			}
+	public boolean alreadyBought(OfferdableItem s) {
+//		for(Sight s2: this.myList) {
+//			if(s.equals(s2)) {
+//				return true;
+//			}
+//		}
+		try {
+			
+			return myList.contains(s);
+		}catch(ClassCastException e) {
+			return false;
 		}
-		return false;
 	}
 
 	@Override

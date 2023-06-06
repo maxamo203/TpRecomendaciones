@@ -23,7 +23,7 @@ public class InterfazUsuario {
 			misOfferdables.addAll(misPromociones);
 			char opcion;
 			//System.out.println(misOfferdables);
-			
+			String []salidas = new String[misUsuarios.size()];
 			try (Scanner teclado = new Scanner(System.in)) {
 				for(int i =0; i<misUsuarios.size();i++) {
 					System.out.println("\n Nombre de visitante: "+misUsuarios.get(i).getName()+"\n");
@@ -45,11 +45,23 @@ public class InterfazUsuario {
 							System.out.println("----------------------------------------------------------------------------");
 						}
 					}
-					System.out.println("\n(!)Datos del usuario "+misUsuarios.get(i).getName()+" "+misUsuarios.get(i).getStrMySights() +" Dinero gastado: "+misUsuarios.get(i).getSpentMoney() +" Tiempo invertido: "+misUsuarios.get(i).getSpentTime() +"\n");
+					//System.out.println("\n(!)Datos del usuario "+misUsuarios.get(i).getName()+" "+misUsuarios.get(i).getStrMySights() +" Dinero gastado: "+misUsuarios.get(i).getSpentMoney() +" Tiempo invertido: "+misUsuarios.get(i).getSpentTime() +"\n");
+					String salida = generarStringUsuario(misUsuarios.get(i));
+					System.out.println(salida);
+					salidas[i] = salida;
 				}
 			}
 			
-			Archive.cargarArchivoSalida(misUsuarios,rutaSalida);
+			Archive.cargarArchivoSalida(salidas, rutaSalida);
+		}
+		private static String generarStringUsuario(User user) {
+			String salida = user.getName() + " compró:\n";
+			for(OfferdableItem i: user.getSights()) {
+				salida += i.stringParaUsuario() + "\n";
+			}
+			salida += "----------------------------------------------------------------------------\n";
+			return salida;
+			
 		}
 		private static char leerTeclado(Scanner teclado) {
 			

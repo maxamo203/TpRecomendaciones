@@ -62,4 +62,11 @@ public class Sight extends OfferdableItem{
 	public String toString() {
 		return "Atraccion\n*Nombre = " + name + "\n*Cupo = " + quota + "\n*Tipo = " + type + "\n*Precio = $" + cost + ",\n*Duracion = " + time+" horas";
 	}
+
+	@Override
+	public String stringParaUsuario() {
+		
+		return "Atraccion\n*Nombre = " + name + "\n*Tipo = " + type + "\n*Precio = $" + cost + ",\n*Duracion = " + time+" horas\n" + 
+		"---------";
+	}
 }
