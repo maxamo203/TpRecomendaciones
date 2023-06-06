@@ -18,6 +18,8 @@ public class PromotionFreeSights extends Promotion {
 			if( s.equals(s2.getName())) {
 				this.freeSights.add(s2);
 				this.discount += s2.getCost();
+				this.time += s2.getTime();
+				this.cost += s2.getCost();
 				return;
 			}
 		}
