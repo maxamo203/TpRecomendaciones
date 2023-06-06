@@ -10,7 +10,6 @@ public class ComparatorPrefCostTime implements Comparator<OfferdableItem>{
 		this.myPreferency=myPref;
 	}
 	
-	@Override
 	public int compare(OfferdableItem o1, OfferdableItem o2) {
 		if(o1.type == this.myPreferency && o2.type !=this.myPreferency) {
 			return -1;

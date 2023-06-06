@@ -1,19 +1,13 @@
 package mainProcess;
 
-
 public class Main {
 
 	public static void main(String[] args) {
-		String base = "C:\\Users\\maxam\\Downloads\\Trabajo_Tierra_Media\\src\\mainProcess\\";
-		String rutaArchUsuarios= base + "usuarios.in",
-			rutaArchAtracciones=base + "atracciones.in", 
-			rutaArchPromociones=base + "promociones.in";
-		String rutaSalida=base + "salidaUsuarios.out";
+		String rutaArchUsuarios="src\\mainProcess\\usuarios.in",
+				rutaArchAtracciones="src\\mainProcess\\atracciones.in",
+				rutaArchPromociones="src\\mainProcess\\promociones.in";
+		String rutaSalida="src\\mainProcess\\salidaUsuarios.out";
 		
 		InterfazUsuario.mainProcess(rutaArchUsuarios,rutaArchAtracciones, rutaArchPromociones,rutaSalida);
-		
-	
 	}
-
-	
-}
+	}

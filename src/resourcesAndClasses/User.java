@@ -3,6 +3,7 @@ package resourcesAndClasses;
 import java.util.ArrayList;
 
 public class User {
+
 	private String name;
 	private double money;
 	private double time;
@@ -12,7 +13,7 @@ public class User {
 	
 	private double spentMoney;
 	private double spentTime;
-	
+
 	public User(String name, double money, double time, Preferency myPref) {
 		this.name = name;
 		this.money = money;
@@ -23,7 +24,7 @@ public class User {
 		this.spentTime = 0;
 		this.myList = new ArrayList<Sight>();
 	}
-	
+
 	public void update(Sight ent) {
 		this.money -= ent.getCost();
 		this.spentMoney+=ent.getCost();
@@ -31,7 +32,7 @@ public class User {
 		this.spentTime+=ent.getTime();
 		this.myList.add(ent);
 	}
-	
+
 	public double getMoney() {
 		return this.money;
 	}
@@ -77,5 +78,4 @@ public class User {
 		}
 		return false;
 	}
-	
 }

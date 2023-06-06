@@ -2,8 +2,7 @@ package resourcesAndClasses;
 
 import java.util.Objects;
 
-public class Sight extends OfferdableItem {
-
+public class Sight extends OfferdableItem{
 	private String name;
 	private int quota;
 
@@ -68,5 +67,4 @@ public class Sight extends OfferdableItem {
 	public String toString() {
 		return "Atraccion\n*Nombre = " + name + "\n*Cupo = " + quota + "\n*Tipo = " + type + "\n*Precio = $" + cost + ",\n*Duracion = " + time+" horas";
 	}
-
 }

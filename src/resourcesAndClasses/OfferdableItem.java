@@ -26,5 +26,4 @@ public abstract class OfferdableItem {
 	public abstract boolean canBeBoughtBy(User u);
 	
 	public abstract void boughtBy(User u);
-	
 }

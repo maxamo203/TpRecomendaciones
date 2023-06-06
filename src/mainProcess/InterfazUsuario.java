@@ -39,7 +39,7 @@ public class InterfazUsuario {
 									
 							if(opcion == 'S') {
 								actualItem.boughtBy(misUsuarios.get(i));
-								System.out.println("Â¡Aceptada!");
+								System.out.println("¡Aceptada!");
 							}
 							else {
 								System.out.println("Rechazada...");
