@@ -13,4 +13,14 @@ public class PromotionAbsolute extends Promotion {
 	public double getDiscount() {
 		return this.discount;
 	}
+	
+	@Override
+	public String toString() {
+		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+
+				this.getStrMySights()+ "\n*Precio original = $" + cost +
+				"\nSe descuenta: $" + this.getDiscount() +
+				"\n*Precio con descuento = $"+ 
+				(this.cost-this.getDiscount()) +"\n*Duracion = " + time+" horas";
+	}
+
 }

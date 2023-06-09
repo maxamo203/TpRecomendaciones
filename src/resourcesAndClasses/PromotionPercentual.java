@@ -12,6 +12,19 @@ public class PromotionPercentual extends Promotion {
 	@Override
 	public double getDiscount() {
 		return this.getCost() * (this.percentual/100);
-	}	
+	}
+	
+	public double getRawDiscount() {
+		return this.percentual;
+	}
+	
+	@Override
+	public String toString() {
+		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+
+				this.getStrMySights()+ "\n*Precio original = $" + cost +
+				"\nSe descuenta: %" + this.getRawDiscount() + 
+				"\n*Precio con descuento = $"+ 
+				(this.cost-this.getDiscount()) +"\n*Duracion = " + time+" horas";
+	}
 
 }

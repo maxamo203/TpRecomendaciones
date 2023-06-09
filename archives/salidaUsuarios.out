@@ -1,92 +1,54 @@
 GOKU compró:
+Promocion
+*Tipo = Combate!
+*Atracciones Incluidas = Marte Namekusei 
+*Precio original = $700.0
+Se descuenta: %10.0
+*Precio con descuento = $630.0
+*Duracion = 2.0 horas
+---------
+Atraccion
+*Nombre = Inframundo
+*Tipo = Combate!
+*Precio = $700.0,
+*Duracion = 1.0 horas
+---------
+---------
+En total gasto: $1330.00
+El tiempo total de las atracciones es: 3.00 horas
+En total se ahorró $70.00
 ----------------------------------------------------------------------------
 VEGETTA compró:
-Atraccion
-*Nombre = Vegita
-*Tipo = Banquete!
-*Precio = $200.0,
-*Duracion = 1.0 horas
 ---------
-Atraccion
-*Nombre = Namekusei
-*Tipo = Combate!
-*Precio = $200.0,
-*Duracion = 1.0 horas
----------
+En total gasto: $0.00
+El tiempo total de las atracciones es: 0.00 horas
+En total se ahorró $0.00
 ----------------------------------------------------------------------------
 TRUNKS compró:
-Atraccion
-*Nombre = UNLAM
-*Tipo = Academico!
-*Precio = $400.0,
-*Duracion = 1.0 horas
 ---------
-Atraccion
-*Nombre = TacosDelTioNacho
-*Tipo = Banquete!
-*Precio = $300.0,
-*Duracion = 1.0 horas
----------
-Atraccion
-*Nombre = Vegita
-*Tipo = Banquete!
-*Precio = $200.0,
-*Duracion = 1.0 horas
----------
-Atraccion
-*Nombre = Inframundo
-*Tipo = Combate!
-*Precio = $700.0,
-*Duracion = 1.0 horas
----------
-Atraccion
-*Nombre = Marte
-*Tipo = Combate!
-*Precio = $500.0,
-*Duracion = 1.0 horas
----------
+En total gasto: $0.00
+El tiempo total de las atracciones es: 0.00 horas
+En total se ahorró $0.00
 ----------------------------------------------------------------------------
 PICCOLO compró:
-Atraccion
-*Nombre = UNLAM
-*Tipo = Academico!
-*Precio = $400.0,
-*Duracion = 1.0 horas
----------
-Atraccion
-*Nombre = Tierra
-*Tipo = Academico!
-*Precio = $300.0,
-*Duracion = 1.0 horas
----------
-Atraccion
-*Nombre = TacosDelTioNacho
+Promocion
 *Tipo = Banquete!
-*Precio = $300.0,
-*Duracion = 1.0 horas
+*Atracciones Incluidas = TacosDelTioNacho Vegita 
+*Precio original = $500.0
+Se descuenta: $100.0
+*Precio con descuento = $400.0
+*Duracion = 2.0 horas
 ---------
-Atraccion
-*Nombre = Vegita
-*Tipo = Banquete!
-*Precio = $200.0,
-*Duracion = 1.0 horas
+Promocion
+*Tipo = Academico!
+*Atracciones Incluidas = Tierra UNLAM 
+*Precio original = $700.0
+Se descuenta: %20.0
+*Precio con descuento = $560.0
+*Duracion = 2.0 horas
 ---------
-Atraccion
-*Nombre = Inframundo
-*Tipo = Combate!
-*Precio = $700.0,
-*Duracion = 1.0 horas
 ---------
-Atraccion
-*Nombre = Marte
-*Tipo = Combate!
-*Precio = $500.0,
-*Duracion = 1.0 horas
----------
-Atraccion
-*Nombre = Namekusei
-*Tipo = Combate!
-*Precio = $200.0,
-*Duracion = 1.0 horas
----------
+En total gasto: $960.00
+El tiempo total de las atracciones es: 4.00 horas
+En total se ahorró $240.00
 ----------------------------------------------------------------------------

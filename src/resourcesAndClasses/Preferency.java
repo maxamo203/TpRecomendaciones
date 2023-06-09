@@ -1,25 +1,25 @@
 package resourcesAndClasses;
 
 public enum Preferency {
-	AVENTURA,
+	//AVENTURA,
 	BANQUETE,
 	COMBATE,
-	ACADEMICO,
-	CONQUISTA;
+	ACADEMICO;
+	//CONQUISTA;
 	
 	@Override
 	public String toString() {
 	    switch (this) {
-	        case AVENTURA:
-	            return "Aventura!";
+//	        case AVENTURA:
+//	            return "Aventura!";
 	        case BANQUETE:
 	            return "Banquete!";
 	        case COMBATE:
 	            return "Combate!";
 	        case ACADEMICO:
 	            return "Academico!";
-	        case CONQUISTA:
-	            return "Conquista!";
+//	        case CONQUISTA:
+//	            return "Conquista!";
 	        default:
 	            return null;
 	    }

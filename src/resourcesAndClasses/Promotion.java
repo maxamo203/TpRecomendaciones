@@ -27,7 +27,6 @@ public abstract class Promotion extends OfferdableItem{
 		}
 	}
 	
-
 	
 	
 	@Override
@@ -58,7 +57,7 @@ public abstract class Promotion extends OfferdableItem{
 		return ret;
 	}
 	
-	private boolean sightValidation(User u) { //validates quota and alreadyBought parameters
+	protected boolean sightValidation(User u) { //validates quota and alreadyBought parameters
 		for(OfferdableItem s: this.mySights) {
 			if(s.getQuota()==0 || u.alreadyBought(s)) {
 				return false;
@@ -102,10 +101,7 @@ public abstract class Promotion extends OfferdableItem{
 	}
 
 
-	@Override
-	public String toString() {
-		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+ "\n*Precio original = $" + cost +"\n*Precio con descuento = $"+ (this.cost-this.getDiscount()) +"\n*Duracion = " + time+" horas";
-	}
+	
 	
 	@Override
 	public String stringParaUsuario() {

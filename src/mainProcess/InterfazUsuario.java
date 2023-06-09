@@ -18,17 +18,42 @@ public class InterfazUsuario {
 			ArrayList<Sight> misAtracciones = Archive.ReadSights(rutaArchAtracciones);
 			ArrayList<Promotion> misPromociones = Archive.ReadPromotion(rutaArchPromociones, misAtracciones);
 			
-			ArrayList<OfferdableItem> misOfferdables = new ArrayList<OfferdableItem>();
-			misOfferdables.addAll(misAtracciones);
-			misOfferdables.addAll(misPromociones);
+			ArrayList<OfferdableItem> misOfferdablesCombate = new ArrayList<OfferdableItem>();
+			misOfferdablesCombate.addAll(misPromociones);
+			misOfferdablesCombate.addAll(misAtracciones);
+			Collections.sort(misOfferdablesCombate, new ComparatorPrefCostTime(Preferency.COMBATE));
+			
+			
+			ArrayList<OfferdableItem> misOfferdablesBanquete = new ArrayList<OfferdableItem>();
+			misOfferdablesBanquete.addAll(misOfferdablesCombate);
+			Collections.sort(misOfferdablesBanquete, new ComparatorPrefCostTime(Preferency.BANQUETE));
+			
+			
+			ArrayList<OfferdableItem> misOfferdablesAventura = new ArrayList<OfferdableItem>();
+			misOfferdablesAventura.addAll(misOfferdablesCombate);
+			Collections.sort(misOfferdablesAventura, new ComparatorPrefCostTime(Preferency.ACADEMICO));
+			
+			
+			ArrayList<OfferdableItem> misOfferdables = null;
 			char opcion;
 			//System.out.println(misOfferdables);
 			String []salidas = new String[misUsuarios.size()];
 			try (Scanner teclado = new Scanner(System.in)) {
 				for(int i =0; i<misUsuarios.size();i++) {
 					System.out.println("\n Nombre de visitante: "+misUsuarios.get(i).getName()+"\n");
-					Collections.sort(misOfferdables, new ComparatorPrefCostTime(misUsuarios.get(i).getPref()));
-				
+					//Collections.sort(misOfferdables, new ComparatorPrefCostTime(misUsuarios.get(i).getPref()));
+					switch(misUsuarios.get(i).getPref()) {
+					case COMBATE: 
+						misOfferdables = misOfferdablesCombate;
+						break;
+					case BANQUETE: 
+						misOfferdables = misOfferdablesBanquete;
+						break;
+					case ACADEMICO: 
+						misOfferdables = misOfferdablesAventura;
+					default:
+						break;
+				}	
 					for(OfferdableItem actualItem: misOfferdables) {
 						if(actualItem.canBeBoughtBy(misUsuarios.get(i))){
 							System.out.println(actualItem);
@@ -68,13 +93,13 @@ public class InterfazUsuario {
 		}
 		private static char leerTeclado(Scanner teclado) {
 			
-			char opcion;
+			String opcion;
 			do {
 				System.out.println("\nAcepta sugerencia? Ingrese S o N\n");
-				opcion = teclado.next().toUpperCase().charAt(0);
-			}while(opcion != 'S' && opcion !='N');
+				opcion = teclado.next().toUpperCase();
+			}while(!opcion.equals("S") && !opcion.equals("N"));
 			
-			return opcion;
+			return opcion.charAt(0);
 		}
 		
 }
