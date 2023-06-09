@@ -86,10 +86,7 @@ public abstract class Promotion extends OfferdableItem{
 	}
 
 
-	@Override
-	public String toString() {
-		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+ "\n*Precio original = $" + cost +"\n*Precio con descuento = $"+ (this.cost-this.getDiscount()) +"\n*Duracion = " + time+" horas";
-	}
+	
 
 }
 
