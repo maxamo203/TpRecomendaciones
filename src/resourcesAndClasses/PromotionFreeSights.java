@@ -18,6 +18,8 @@ public class PromotionFreeSights extends Promotion {
 			if( s.equals(s2.getName())) {
 				this.freeSights.add(s2);
 				this.discount += s2.getCost();
+				this.time += s2.getTime();
+				this.cost += s2.getCost();
 				return;
 			}
 		}
@@ -26,6 +28,18 @@ public class PromotionFreeSights extends Promotion {
 	@Override
 	public double getDiscount() {		
 		return discount;
+	}
+	
+	@Override
+	public void boughtBy(User u) {
+		for(Sight s: this.mySights) {
+			s.decreaseQuota();
+		}
+		for(Sight s: this.freeSights) {
+			s.decreaseQuota();
+		}
+		u.update(this);
+		u.makeDiscount(this.getDiscount());
 	}
 	
 	private String getStrMyFreeSights() {
