@@ -18,14 +18,45 @@ public class InterfazUsuario {
 			ArrayList<Sight> misAtracciones = Archive.ReadSights(rutaArchAtracciones);
 			ArrayList<Promotion> misPromociones = Archive.ReadPromotion(rutaArchPromociones, misAtracciones);
 			
-			ArrayList<OfferdableItem> misOfferdables = new ArrayList<OfferdableItem>();
-			misOfferdables.addAll(misAtracciones);
-			misOfferdables.addAll(misPromociones);
+			ArrayList<OfferdableItem> misOfferdablesCombate = new ArrayList<OfferdableItem>();
+			misOfferdablesCombate.addAll(misPromociones);
+			misOfferdablesCombate.addAll(misAtracciones);
+			Collections.sort(misOfferdablesCombate, new ComparatorPrefCostTime(Preferency.COMBATE));
+			
+			
+			ArrayList<OfferdableItem> misOfferdablesBanquete = new ArrayList<OfferdableItem>();
+			misOfferdablesBanquete.addAll(misOfferdablesCombate);
+			Collections.sort(misOfferdablesBanquete, new ComparatorPrefCostTime(Preferency.BANQUETE));
+			
+			
+			ArrayList<OfferdableItem> misOfferdablesAventura = new ArrayList<OfferdableItem>();
+			misOfferdablesAventura.addAll(misOfferdablesCombate);
+			Collections.sort(misOfferdablesAventura, new ComparatorPrefCostTime(Preferency.AVENTURA));
+			
+			
+			ArrayList<OfferdableItem> misOfferdables = null;
 			char opcion;
 			//System.out.println(misOfferdables);
 			
 			try (Scanner teclado = new Scanner(System.in)) {
+				
+				
+				
 				for(int i =0; i<misUsuarios.size();i++) {
+					
+					switch(misUsuarios.get(i).getPref()) {
+					case COMBATE: 
+						misOfferdables = misOfferdablesCombate;
+						break;
+					case BANQUETE: 
+						misOfferdables = misOfferdablesBanquete;
+						break;
+					case AVENTURA: 
+						misOfferdables = misOfferdablesAventura;
+					default:
+						break;
+					}
+					
 					System.out.println("\n Nombre de visitante: "+misUsuarios.get(i).getName()+"\n");
 					Collections.sort(misOfferdables, new ComparatorPrefCostTime(misUsuarios.get(i).getPref()));
 				
@@ -37,7 +68,7 @@ public class InterfazUsuario {
 										
 							if(opcion == 'S') {
 								actualItem.boughtBy(misUsuarios.get(i));
-								System.out.println("�Aceptada!");
+								System.out.println("Aceptada!");
 							}
 							else {
 								System.out.println("Rechazada...");
