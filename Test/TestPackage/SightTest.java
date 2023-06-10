@@ -15,7 +15,7 @@ public class SightTest {
 	private Sight atraccion2;
 	@Before
 	public void setUp() {
-		user = new User("VEGETTA",1700,10,Preferency.ACADEMICO);
+		user = new User("VEGETTA",1700,10,Preferency.COMBATE);
 		atraccion = new Sight("Namekusei",200,1,100,Preferency.COMBATE);
 		atraccion2 = new Sight("Namekusei",200,1,99,Preferency.COMBATE);
 	}
@@ -34,7 +34,7 @@ public class SightTest {
 	}
 	@Test
 	public void testCanBeBoughtByNO() {
-		user = new User("VEGETTA",0,0,Preferency.ACADEMICO);
+		user = new User("VEGETTA",0,0,Preferency.COMBATE);
 		assertEquals(false,atraccion.canBeBoughtBy(user));
 	}
 

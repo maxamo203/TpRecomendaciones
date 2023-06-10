@@ -8,6 +8,7 @@ public class User {
 	private String name;
 	private double money;
 	private double time;
+	private double discountMade;
 	private Preferency myPref;
 	
 	private ArrayList<Sight>myList;
@@ -21,6 +22,7 @@ public class User {
 		this.time = time;
 		this.myPref = myPref;
 		
+		this.discountMade=0;
 		this.spentMoney =0; 
 		this.spentTime = 0;
 		this.myList = new ArrayList<Sight>();
@@ -66,25 +68,16 @@ public class User {
 		return myListNames;
 	}
 	
+	public double getDiscountMade() {
+		return this.discountMade;
+	}
+	
 	public void makeDiscount(double discount) {
 		this.money += discount;
 		this.spentMoney -= discount;
+		this.discountMade+=discount;
 	}
 	
-	public void addAttraction(Sight s)
-	{
-		this.myList.add(s);
-	}
-	
-	public void setSpentTime(double a)
-	{
-		this.spentTime = a;
-	}
-	
-	public void setSpentMoney(int a)
-	{
-		this.spentMoney = a;
-	}
 	
 	public boolean alreadyBought(Sight s) {
 		for(Sight s2: this.myList) {
@@ -114,6 +107,11 @@ public class User {
 				&& Double.doubleToLongBits(spentMoney) == Double.doubleToLongBits(other.spentMoney)
 				&& Double.doubleToLongBits(spentTime) == Double.doubleToLongBits(other.spentTime)
 				&& Double.doubleToLongBits(time) == Double.doubleToLongBits(other.time);
+	}
+	
+	@Override
+	public String toString() {
+		return "\n(!)Datos del usuario "+this.getName()+"\n*"+this.getStrMySights() +"\n*Dinero gastado: $"+this.getSpentMoney() +"\n*Tiempo invertido: "+this.getSpentTime() +" horas" +"\n*Descuento en las compras: $"+this.getDiscountMade()+"\n----------------------------------------------------------------------------\n";
 	}
 	
 	

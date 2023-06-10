@@ -13,9 +13,8 @@ public abstract class OfferdableItem {
 		return this.type;
 	}
 	
-	public double getCost() { // when the offerdableItem is a promotion, returns the original price
-		return this.cost;
-	}
+	public abstract double getCost(); // when the offerdableItem is a promotion, returns the price with discount
+		
 	
 	public double getTime() {
 		return this.time;

@@ -27,17 +27,23 @@ public abstract class Promotion extends OfferdableItem{
 	}
 	
 
-	public abstract double getDiscount();
+	public abstract double getDiscount(); // DESCUENTO A SECAS
 	
 	
-	public double getCostWithDiscount() {
-		return this.getCost()-this.getDiscount();
+	public double getCostWithoutDiscount() { // PRECIO SIN DESCUENTO
+		return this.cost;
+	}
+	
+	@Override
+	
+	public double getCost() { // PRECIO CON DESCUENTO
+		return this.cost - this.getDiscount();
 	}
 	
 	
 	public boolean canBeBoughtBy(User u) {
 		boolean ret = false;
-		if(this.getCostWithDiscount()<=u.getMoney() && this.getTime()<=u.getTime() && this.sightValidation(u) ) {
+		if(this.getCost()<=u.getMoney() && this.getTime()<=u.getTime() && this.sightValidation(u) ) {
 			ret = true;
 		}
 		return ret;
@@ -85,8 +91,13 @@ public abstract class Promotion extends OfferdableItem{
 		return Objects.equals(mySights, other.mySights);
 	}
 
-
-	
-
+	@Override
+	public String toString() {
+		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+ 
+				"\n*Precio original = $" + this.getCostWithoutDiscount() +
+				"\n*Descuento = $" + this.getDiscount() + 
+				"\n*Precio con descuento = $"+ (this.getCost()) +
+				"\n*Duracion = " + time+" horas";
+	}
 }
 

@@ -18,8 +18,6 @@ public class PromotionFreeSights extends Promotion {
 			if( s.equals(s2.getName())) {
 				this.freeSights.add(s2);
 				this.discount += s2.getCost();
-				this.time += s2.getTime();
-				this.cost += s2.getCost();
 				return;
 			}
 		}
@@ -40,6 +38,6 @@ public class PromotionFreeSights extends Promotion {
 	
 	@Override
 	public String toString() {
-		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+"\n*Atracciones Gratuitas = "+this.getStrMyFreeSights()+ "\n*Precio original = $" + cost +"\n*Precio con descuento = $"+ (this.cost-this.getDiscount()) +"\n*Duracion = " + time + "horas";
+		return super.toString() + "\n*Atracciones gratuitas: "+this.getStrMyFreeSights();
 	}
 }

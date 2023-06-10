@@ -11,10 +11,10 @@ public class ComparatorPrefCostTime implements Comparator<OfferdableItem>{
 	}
 	
 	public int compare(OfferdableItem o1, OfferdableItem o2) {
-		if(o1.type == this.myPreferency && o2.type !=this.myPreferency) {
+		if(o1.getType() == this.myPreferency && o2.getType() !=this.myPreferency) {
 			return -1;
 		}
-		if(o1.type != this.myPreferency && o2.type == this.myPreferency) {
+		if(o1.getType() != this.myPreferency && o2.getType() == this.myPreferency) {
 			return 1;
 		}
 		
@@ -25,10 +25,10 @@ public class ComparatorPrefCostTime implements Comparator<OfferdableItem>{
 			return 1;
 		}
 		
-		int cmp = Double.compare(o2.cost, o1.cost);
+		int cmp = Double.compare(o2.getCost(), o1.getCost());
 		
 		if(cmp == 0) {
-			cmp = Double.compare(o2.time, o1.time);
+			cmp = Double.compare(o2.getTime(), o1.getTime());
 		}		
 		return cmp;
 	}

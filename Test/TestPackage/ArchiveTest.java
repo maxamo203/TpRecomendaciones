@@ -8,21 +8,21 @@ import org.junit.Test;
 
 
 public class ArchiveTest {
-	Archive archive;
+
 	ArrayList<Sight> miListaDeAtracciones = new ArrayList<Sight>();
 	
 	@Before
 	public void setup() {
-		archive = new Archive();
+
 		
 		Sight miAtraccion = new Sight("Namekusei",200,1,100,Preferency.COMBATE);
-		Sight miAtraccion2 = new Sight("Tierra",300,1,100,Preferency.ACADEMICO);
+		Sight miAtraccion2 = new Sight("Tierra",300,1,100,Preferency.AVENTURA);
 		Sight miAtraccion3 = new Sight("Universo6",500,1,100,Preferency.COMBATE);
 		Sight miAtraccion4 = new Sight("Vegita",200,1,100,Preferency.BANQUETE);
 		Sight miAtraccion5 = new Sight("TacosDelTioNacho",300,1,100,Preferency.BANQUETE);
 		Sight miAtraccion6 = new Sight("Marte",500,1,100,Preferency.COMBATE);
 		Sight miAtraccion7 = new Sight("Inframundo",700,1,100,Preferency.COMBATE);		
-		Sight miAtraccion8 = new Sight("UNLAM",400,1,100,Preferency.ACADEMICO);
+		Sight miAtraccion8 = new Sight("UNLAM",400,1,100,Preferency.AVENTURA);
 		
 		miListaDeAtracciones.add(miAtraccion);
 		miListaDeAtracciones.add(miAtraccion2);
@@ -36,7 +36,7 @@ public class ArchiveTest {
 	
 	@Test
 	public void testAtracciones() {		
-		ArrayList<Sight> myAtraccionList = archive.ReadSights("archivesTest/Atracciones.in");
+		ArrayList<Sight> myAtraccionList = FilesClass.ReadSights("archivesTest/Atracciones.in");
 		
 		Assert.assertEquals(miListaDeAtracciones, myAtraccionList);	
 	}
@@ -45,7 +45,7 @@ public class ArchiveTest {
 	public void testUser() {
 
 		User goku = new User("GOKU",1500, 9, Preferency.COMBATE);
-		User veggeta = new User("VEGETTA",1700,10,Preferency.ACADEMICO);
+		User veggeta = new User("VEGETTA",1700,10,Preferency.COMBATE);
 		User trunks = new User("TRUNKS",1900,15,Preferency.BANQUETE);
 		User piccolo = new User("PICCOLO",2300,23,Preferency.COMBATE);
 		
@@ -54,7 +54,7 @@ public class ArchiveTest {
 		UserList.add(veggeta);
 		UserList.add(trunks);
 		UserList.add(piccolo);
-		ArrayList<User> ArchiveUserList = archive.ReadUsers("archivesTest/Usuarios.in");		
+		ArrayList<User> ArchiveUserList = FilesClass.ReadUsers("archivesTest/Usuarios.in");		
 		Assert.assertEquals(UserList, ArchiveUserList);
 	}
 
@@ -62,33 +62,33 @@ public class ArchiveTest {
 	public void testPromotion() {
 		ArrayList<Promotion> MyPromotionListOrigin = new ArrayList<Promotion>();
 		
-		PromotionPercentual PerAcademicpromotion = new PromotionPercentual(Preferency.ACADEMICO, 20);
-		PerAcademicpromotion.loadSight("Tierra", miListaDeAtracciones);
-		PerAcademicpromotion.loadSight("UNLAM", miListaDeAtracciones);
-		MyPromotionListOrigin.add(PerAcademicpromotion);
+		PromotionPercentual PerCombatePromotion = new PromotionPercentual(Preferency.COMBATE, 20);
+		PerCombatePromotion.loadSight("Vegita", miListaDeAtracciones);
+		PerCombatePromotion.loadSight("Marte", miListaDeAtracciones);
+		MyPromotionListOrigin.add(PerCombatePromotion);
 		
-		PromotionAbsolute AbsAcademicpromotion = new PromotionAbsolute(Preferency.ACADEMICO, 300);
-		AbsAcademicpromotion.loadSight("Tierra", miListaDeAtracciones);
-		AbsAcademicpromotion.loadSight("UNLAM", miListaDeAtracciones);
-		MyPromotionListOrigin.add(AbsAcademicpromotion);
+		PromotionAbsolute AbsAventuraPromotion = new PromotionAbsolute(Preferency.AVENTURA, 300);
+		AbsAventuraPromotion.loadSight("Tierra", miListaDeAtracciones);
+		AbsAventuraPromotion.loadSight("UNLAM", miListaDeAtracciones);
+		MyPromotionListOrigin.add(AbsAventuraPromotion);
 		
 		PromotionAbsolute AbsBanquetepromotion = new PromotionAbsolute(Preferency.BANQUETE, 100);
 		AbsBanquetepromotion.loadSight("TacosDelTioNacho", miListaDeAtracciones);
 		AbsBanquetepromotion.loadSight("Vegita", miListaDeAtracciones);
 		MyPromotionListOrigin.add(AbsBanquetepromotion);
 		
-		PromotionFreeSights FreeCombatepromotion = new PromotionFreeSights(Preferency.ACADEMICO);
+		PromotionFreeSights FreeCombatepromotion = new PromotionFreeSights(Preferency.COMBATE);
 		FreeCombatepromotion.loadSight("Marte", miListaDeAtracciones);
 		FreeCombatepromotion.loadSight("Inframundo", miListaDeAtracciones);
 		FreeCombatepromotion.addFreeSight("Namekusei", miListaDeAtracciones);
 		MyPromotionListOrigin.add(FreeCombatepromotion);
 		
-		PromotionPercentual PerCombatepromotion = new PromotionPercentual(Preferency.ACADEMICO, 20);
+		PromotionPercentual PerCombatepromotion = new PromotionPercentual(Preferency.COMBATE, 20);
 		PerCombatepromotion.loadSight("Marte", miListaDeAtracciones);
 		PerCombatepromotion.loadSight("Namekusei", miListaDeAtracciones);
 		MyPromotionListOrigin.add(PerCombatepromotion);
 		
-		ArrayList<Promotion> MyPromotionList = archive.ReadPromotion("archivesTest/Paquetes.in", miListaDeAtracciones);
+		ArrayList<Promotion> MyPromotionList = FilesClass.ReadPromotion("archivesTest/Paquetes.in", miListaDeAtracciones);
 		Assert.assertEquals(MyPromotionListOrigin, MyPromotionList);
 	}
 }

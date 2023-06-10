@@ -3,9 +3,7 @@ package resourcesAndClasses;
 public enum Preferency {
 	AVENTURA,
 	BANQUETE,
-	COMBATE,
-	ACADEMICO,
-	CONQUISTA;
+	COMBATE;
 	
 	@Override
 	public String toString() {
@@ -16,10 +14,6 @@ public enum Preferency {
 	            return "Banquete!";
 	        case COMBATE:
 	            return "Combate!";
-	        case ACADEMICO:
-	            return "Academico!";
-	        case CONQUISTA:
-	            return "Conquista!";
 	        default:
 	            return null;
 	    }

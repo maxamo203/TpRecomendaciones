@@ -29,7 +29,6 @@ public class Sight extends OfferdableItem{
 	public void boughtBy(User u) {
 		this.quota--;
 		u.update(this);
-		// for now this is not defined but its very probably that User will have an ArrayList of OfferdableItems inside
 	}
 	
 	public String getName() {
@@ -40,6 +39,12 @@ public class Sight extends OfferdableItem{
 		return this.quota;
 	}
 
+	@Override
+	public double getCost() {
+		return this.cost;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(cost, name, quota, time, type);
@@ -62,4 +67,5 @@ public class Sight extends OfferdableItem{
 	public String toString() {
 		return "Atraccion\n*Nombre = " + name + "\n*Cupo = " + quota + "\n*Tipo = " + type + "\n*Precio = $" + cost + ",\n*Duracion = " + time+" horas";
 	}
+
 }
