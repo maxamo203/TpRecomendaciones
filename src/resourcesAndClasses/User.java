@@ -4,7 +4,7 @@ package resourcesAndClasses;
 //import java.util.Collection;
 //import java.util.Collections;
 import java.util.Objects;
-import java.util.TreeSet;
+import java.util.HashSet;
 
 public class User {
 
@@ -13,14 +13,14 @@ public class User {
 	private double time;
 	private Preferency myPref;
 	
-	private TreeSet<OfferdableItem>myList;
+	private HashSet<OfferdableItem>myList;
 	
 	private double spentMoney;
 	private double savedMoney;
 	
 
 	private double spentTime;
-	private TreeSet<Sight> mySights;
+	private HashSet<Sight> mySights;
 
 	public User(String name, double money, double time, Preferency myPref) {
 		this.name = name;
@@ -31,8 +31,8 @@ public class User {
 		this.spentMoney =0; 
 		this.savedMoney = 0;
 		this.spentTime = 0;
-		this.myList = new TreeSet<OfferdableItem>();
-		this.mySights = new TreeSet<Sight>();
+		this.myList = new HashSet<OfferdableItem>();
+		this.mySights = new HashSet<Sight>();
 	}
 
 	public void update(OfferdableItem ent) {
@@ -72,7 +72,7 @@ public class User {
 		return this.name;
 	}
 	
-	public TreeSet<OfferdableItem> getSights() {
+	public HashSet<OfferdableItem> getSights() {
 //		String myListNames="Atracciones Compradas: ";
 //		for(OfferdableItem s:this.myList) {
 //			myListNames+=s.getName()+" ";
@@ -93,7 +93,7 @@ public class User {
 //				return true;
 //			}
 //		}
-		TreeSet<OfferdableItem> aux = new TreeSet<OfferdableItem>(mySights);
+		HashSet<OfferdableItem> aux = new HashSet<OfferdableItem>(mySights);
 		aux.retainAll(s.getSights());
 		return !aux.isEmpty();
 //		try {

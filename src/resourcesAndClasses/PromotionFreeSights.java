@@ -1,7 +1,8 @@
 package resourcesAndClasses;
 
 import java.util.ArrayList;
-import java.util.TreeSet;
+import java.util.HashSet;
+import java.util.Objects;
 
 public class PromotionFreeSights extends Promotion {
 	private ArrayList<Sight> freeSights;
@@ -71,8 +72,8 @@ public class PromotionFreeSights extends Promotion {
 		u.makeDiscount(this.getDiscount());
 	}
 	@Override
-	public TreeSet<Sight> getSights() {
-		TreeSet<Sight> sights = super.getSights();
+	public HashSet<Sight> getSights() {
+		HashSet<Sight> sights = super.getSights();
 		sights.addAll(freeSights);
 		return sights;
 	}
@@ -89,7 +90,27 @@ public class PromotionFreeSights extends Promotion {
 		return "Promocion\n*Tipo = " + type +"\n*Atracciones Incluidas = "+this.getStrMySights()+"\n*Atracciones Gratuitas = "+this.getStrMyFreeSights()+ "\n*Precio original = $" + cost +"\n*Precio con descuento = $"+ (this.cost-this.getDiscount()) +"\n*Duracion = " + time + "horas";
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(discount, freeSights, mySights);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PromotionFreeSights other = (PromotionFreeSights) obj;
+		return Double.doubleToLongBits(discount) == Double.doubleToLongBits(other.discount)
+				&& Objects.equals(freeSights, other.freeSights) 
+				&& Objects.equals(mySights, other.mySights);
+	}
+
+
+	
 	
 	
 

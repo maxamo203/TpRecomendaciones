@@ -1,7 +1,7 @@
 package resourcesAndClasses;
 
+import java.util.HashSet;
 import java.util.Objects;
-import java.util.TreeSet;
 
 public class Sight extends OfferdableItem{
 	private String name;
@@ -43,6 +43,7 @@ public class Sight extends OfferdableItem{
 	public void decreaseQuota() {
 		--this.quota;
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(cost, name, quota, time, type);
@@ -74,8 +75,8 @@ public class Sight extends OfferdableItem{
 	}
 
 	@Override
-	public TreeSet<Sight> getSights() {
-		TreeSet<Sight> sight = new TreeSet<Sight>();
+	public HashSet<Sight> getSights() {
+		HashSet<Sight> sight = new HashSet<Sight>();
 		sight.add(this);
 		return sight;
 	}
