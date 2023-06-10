@@ -123,6 +123,18 @@ public class User {
 				&& Double.doubleToLongBits(spentTime) == Double.doubleToLongBits(other.spentTime)
 				&& Double.doubleToLongBits(time) == Double.doubleToLongBits(other.time);
 	}
-	
+	@Override
+	public  String toString() {
+		String salida = this.getName() + " compró:\n";
+		for(OfferdableItem i: this.getSights()) {
+			salida += i.stringParaUsuario() + "\n";
+		}
+		salida += String.format("---------\nEn total gasto: $%.2f\n"
+				+ "El tiempo total de las atracciones es: %.2f horas\n"
+				+ "En total se ahorró $%.2f\n", this.getSpentMoney(),this.getSpentTime(),this.getSavedMoney());
+		salida += "----------------------------------------------------------------------------\n";
+		return salida;
+		
+	}
 	
 }

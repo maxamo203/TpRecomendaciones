@@ -3,14 +3,17 @@ package TestPackage;
 import resourcesAndClasses.*;
 import java.util.ArrayList;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class ArchiveTest {
-
-	@Test
-	public void testAtracciones() {
-		Archive atracciones = new Archive();
+	Archive archive;
+	ArrayList<Sight> miListaDeAtracciones = new ArrayList<Sight>();
+	
+	@Before
+	public void setup() {
+		archive = new Archive();
 		
 		Sight miAtraccion = new Sight("Namekusei",200,1,100,Preferency.COMBATE);
 		Sight miAtraccion2 = new Sight("Tierra",300,1,100,Preferency.ACADEMICO);
@@ -21,7 +24,6 @@ public class ArchiveTest {
 		Sight miAtraccion7 = new Sight("Inframundo",700,1,100,Preferency.COMBATE);		
 		Sight miAtraccion8 = new Sight("UNLAM",400,1,100,Preferency.ACADEMICO);
 		
-		ArrayList<Sight> miListaDeAtracciones = new ArrayList<Sight>();
 		miListaDeAtracciones.add(miAtraccion);
 		miListaDeAtracciones.add(miAtraccion2);
 		miListaDeAtracciones.add(miAtraccion3);
@@ -30,15 +32,18 @@ public class ArchiveTest {
 		miListaDeAtracciones.add(miAtraccion6);
 		miListaDeAtracciones.add(miAtraccion7);
 		miListaDeAtracciones.add(miAtraccion8);
+	}
+	
+	@Test
+	public void testAtracciones() {		
+		ArrayList<Sight> myAtraccionList = Archive.ReadSights("archivesTest/Atracciones.in");
 		
-		ArrayList<Sight> myAtraccionList = atracciones.ReadSights("archiveTemporal/Atracciones.in");
 		Assert.assertEquals(miListaDeAtracciones, myAtraccionList);	
 	}
 	
 	@Test
 	public void testUser() {
-		Archive UserArchive = new Archive();
-		
+
 		User goku = new User("GOKU",1500, 9, Preferency.COMBATE);
 		User veggeta = new User("VEGETTA",1700,10,Preferency.ACADEMICO);
 		User trunks = new User("TRUNKS",1900,15,Preferency.BANQUETE);
@@ -49,35 +54,41 @@ public class ArchiveTest {
 		UserList.add(veggeta);
 		UserList.add(trunks);
 		UserList.add(piccolo);
-		ArrayList<User> ArchiveUserList = UserArchive.ReadUsers("archiveTemporal/Usuarios.in");		
+		ArrayList<User> ArchiveUserList = Archive.ReadUsers("archivesTest/Usuarios.in");		
 		Assert.assertEquals(UserList, ArchiveUserList);
 	}
-	
+
 	@Test
 	public void testPromotion() {
-		Archive PromotionArchive = new Archive();
-
-		Sight miAtraccion = new Sight("Namekusei",200,1,100,Preferency.COMBATE);
-		Sight miAtraccion2 = new Sight("Tierra",300,1,100,Preferency.ACADEMICO);
-		Sight miAtraccion3 = new Sight("UNLAM",300,1,100,Preferency.ACADEMICO);
-		Sight miAtraccion4 = new Sight("Universo6",500,1,100,Preferency.COMBATE);
-		Sight miAtraccion5 = new Sight("TacosDelTioNacho",200,1,100,Preferency.BANQUETE);
-		Sight miAtraccion6 = new Sight("Vegita",200,1,100,Preferency.BANQUETE);
-		Sight miAtraccion7 = new Sight("Marte",500,1,100,Preferency.COMBATE);
-		Sight miAtraccion8 = new Sight("Inframundo",700,1,100,Preferency.COMBATE);		
+		ArrayList<Promotion> MyPromotionListOrigin = new ArrayList<Promotion>();
 		
-		ArrayList<Sight> miListaDeAtracciones = new ArrayList<Sight>();
-		miListaDeAtracciones.add(miAtraccion);
-		miListaDeAtracciones.add(miAtraccion2);
-		miListaDeAtracciones.add(miAtraccion3);
-		miListaDeAtracciones.add(miAtraccion4);
-		miListaDeAtracciones.add(miAtraccion5);
-		miListaDeAtracciones.add(miAtraccion6);
-		miListaDeAtracciones.add(miAtraccion7);
-		miListaDeAtracciones.add(miAtraccion8);
+		PromotionPercentual PerAcademicpromotion = new PromotionPercentual(Preferency.ACADEMICO, 20);
+		PerAcademicpromotion.loadSight("Tierra", miListaDeAtracciones);
+		PerAcademicpromotion.loadSight("UNLAM", miListaDeAtracciones);
+		MyPromotionListOrigin.add(PerAcademicpromotion);
 		
-		ArrayList<Promotion> MyPromotionList = PromotionArchive.ReadPromotion("archiveTemporal/Paquetes.in", miListaDeAtracciones);
-		Assert.assertEquals(miListaDeAtracciones, MyPromotionList);
+		PromotionAbsolute AbsAcademicpromotion = new PromotionAbsolute(Preferency.ACADEMICO, 300);
+		AbsAcademicpromotion.loadSight("Tierra", miListaDeAtracciones);
+		AbsAcademicpromotion.loadSight("UNLAM", miListaDeAtracciones);
+		MyPromotionListOrigin.add(AbsAcademicpromotion);
 		
+		PromotionAbsolute AbsBanquetepromotion = new PromotionAbsolute(Preferency.BANQUETE, 100);
+		AbsBanquetepromotion.loadSight("TacosDelTioNacho", miListaDeAtracciones);
+		AbsBanquetepromotion.loadSight("Vegita", miListaDeAtracciones);
+		MyPromotionListOrigin.add(AbsBanquetepromotion);
+		
+		PromotionFreeSights FreeCombatepromotion = new PromotionFreeSights(Preferency.ACADEMICO);
+		FreeCombatepromotion.loadSight("Marte", miListaDeAtracciones);
+		FreeCombatepromotion.loadSight("Inframundo", miListaDeAtracciones);
+		FreeCombatepromotion.addFreeSight("Namekusei", miListaDeAtracciones);
+		MyPromotionListOrigin.add(FreeCombatepromotion);
+		
+		PromotionPercentual PerCombatepromotion = new PromotionPercentual(Preferency.ACADEMICO, 10);
+		PerCombatepromotion.loadSight("Marte", miListaDeAtracciones);
+		PerCombatepromotion.loadSight("Namekusei", miListaDeAtracciones);
+		MyPromotionListOrigin.add(PerCombatepromotion);
+		
+		ArrayList<Promotion> MyPromotionList = Archive.ReadPromotion("archivesTest/Paquetes.in", miListaDeAtracciones);
+		Assert.assertEquals(MyPromotionListOrigin, MyPromotionList);
 	}
 }

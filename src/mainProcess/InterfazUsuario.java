@@ -71,7 +71,7 @@ public class InterfazUsuario {
 						}
 					}
 					//System.out.println("\n(!)Datos del usuario "+misUsuarios.get(i).getName()+" "+misUsuarios.get(i).getStrMySights() +" Dinero gastado: "+misUsuarios.get(i).getSpentMoney() +" Tiempo invertido: "+misUsuarios.get(i).getSpentTime() +"\n");
-					String salida = generarStringUsuario(misUsuarios.get(i));
+					String salida = misUsuarios.get(i).toString();
 					System.out.println(salida);
 					salidas[i] = salida;
 				}
@@ -79,18 +79,7 @@ public class InterfazUsuario {
 			
 			Archive.cargarArchivoSalida(salidas, rutaSalida);
 		}
-		private static String generarStringUsuario(User user) {
-			String salida = user.getName() + " compró:\n";
-			for(OfferdableItem i: user.getSights()) {
-				salida += i.stringParaUsuario() + "\n";
-			}
-			salida += String.format("---------\nEn total gasto: $%.2f\n"
-					+ "El tiempo total de las atracciones es: %.2f horas\n"
-					+ "En total se ahorró $%.2f\n", user.getSpentMoney(),user.getSpentTime(),user.getSavedMoney());
-			salida += "----------------------------------------------------------------------------\n";
-			return salida;
-			
-		}
+		
 		private static char leerTeclado(Scanner teclado) {
 			
 			String opcion;
