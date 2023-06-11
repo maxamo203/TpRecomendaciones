@@ -31,7 +31,8 @@ public class InterfazUsuario {
 			
 			
 			ArrayList<OfferdableItem> misOfferdables = null;
-			
+			System.out.println("	Bienvenido/a al Dragon World! ");
+			System.out.println("----------------------------------------------------------------------------");
 			try (Scanner teclado = new Scanner(System.in)) {		
 				
 				for(int i =0; i<misUsuarios.size();i++) {
