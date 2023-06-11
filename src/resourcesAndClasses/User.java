@@ -60,6 +60,10 @@ public class User {
 		return this.name;
 	}
 	
+	public ArrayList<Sight> getSights(){
+		return this.myList;
+	}
+	
 	public String getStrMySights() {
 		String myListNames="Atracciones Compradas: ";
 		for(Sight s:this.myList) {

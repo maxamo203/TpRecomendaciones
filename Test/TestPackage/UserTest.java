@@ -3,6 +3,8 @@ package TestPackage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,11 +47,18 @@ public class UserTest{
 	
 	@Test
 	public void testUpdate() {
-		user = new User("GOKU",1500, 9, Preferency.COMBATE);
-		user2 = new User("GOKU",1300, 8, Preferency.COMBATE);
-		atraccion.boughtBy(user2);
+		double expectedMoney = 1300;
+		double expectedSpentMoney = 200;
+		double expectedTime = 8;
+		double expectedSpentTime = 1;
+		ArrayList<Sight> expectedSights = new ArrayList<Sight>();
+		expectedSights.add(atraccion);
 		user.update(atraccion);
-		assertEquals(user,user2);
+		assertEquals(expectedMoney,user.getMoney(),0.1);
+		assertEquals(expectedSpentMoney,user.getSpentMoney(),0.1);
+		assertEquals(expectedTime,user.getTime(),0.1);
+		assertEquals(expectedSpentTime,user.getSpentTime(),0.1);
+		assertEquals(expectedSights,user.getSights());
 	}
 	
 	@Test
@@ -69,10 +78,11 @@ public class UserTest{
 	@Test
 	public void testMakeDiscount() {
 		user = new User("GOKU",1500, 9, Preferency.COMBATE);
-		user2 = new User("GOKU",1600, 9, Preferency.COMBATE);
-		//user2.setSpentMoney(-100);
+		double spentMoneyExpected = user.getSpentMoney() - 100;
+		double moneyExpected = user.getMoney() + 100;
 		user.makeDiscount(100);
-		assertEquals(user,user2);	
+		assertEquals(spentMoneyExpected,user.getSpentMoney(),0.1);
+		assertEquals(moneyExpected,user.getMoney(),0.1);
 	}
 	
 	@Test
