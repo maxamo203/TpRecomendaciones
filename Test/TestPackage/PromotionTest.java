@@ -66,6 +66,7 @@ public class PromotionTest {
 		
 		FreeCombatepromotion = new PromotionFreeSights(Preferency.COMBATE);
 		FreeCombatepromotion.addFreeSight("Namekusei", miListaDeAtracciones);
+		FreeCombatepromotion.loadSight("Namekusei", miListaDeAtracciones);
 		FreeCombatepromotion.loadSight("Marte", miListaDeAtracciones);
 		FreeCombatepromotion.loadSight("Inframundo", miListaDeAtracciones);
 		MyPromotionListOrigin.add(FreeCombatepromotion);
