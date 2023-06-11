@@ -65,9 +65,9 @@ public class PromotionTest {
 		MyPromotionListOrigin.add(AbsBanquetepromotion);
 		
 		FreeCombatepromotion = new PromotionFreeSights(Preferency.COMBATE);
+		FreeCombatepromotion.addFreeSight("Namekusei", miListaDeAtracciones);
 		FreeCombatepromotion.loadSight("Marte", miListaDeAtracciones);
 		FreeCombatepromotion.loadSight("Inframundo", miListaDeAtracciones);
-		FreeCombatepromotion.addFreeSight("Namekusei", miListaDeAtracciones);
 		MyPromotionListOrigin.add(FreeCombatepromotion);
 		
 		PerCombatepromotion = new PromotionPercentual(Preferency.COMBATE, 20);
