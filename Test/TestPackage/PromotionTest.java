@@ -110,7 +110,6 @@ public class PromotionTest {
 			assertEquals(2.0,AbsAcademicpromotion.getTime(),0.1);
 			assertEquals(2.0,AbsBanquetepromotion.getTime(),0.1);
 			assertEquals(3.0,FreeCombatepromotion.getTime(),0.1);
-			System.out.println(FreeCombatepromotion.getTime());
 		}
 		
 	}
