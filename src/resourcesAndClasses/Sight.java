@@ -2,24 +2,24 @@ package resourcesAndClasses;
 
 import java.util.Objects;
 
-public class Sight extends OfferdableItem{
+public class Sight extends OfferdableItem {
 	private String name;
 	private int quota;
-	
+
 	public Sight(String name, double cost, double time, int quota, Preferency type) {
 		super(type);
-		this.name =name;
+		this.name = name;
 		this.cost = cost;
 		this.time = time;
-		this.quota= quota;
-		
+		this.quota = quota;
+
 	}
 
 	@Override
 	public boolean canBeBoughtBy(User u) {
 		boolean ret = false;
-		
-		if(u.getMoney()>=this.cost && u.getTime()>=this.time && this.quota>0 && u.alreadyBought(this) == false){
+
+		if (u.getMoney() >= this.cost && u.getTime() >= this.time && this.quota > 0 && u.alreadyBought(this) == false) {
 			ret = true;
 		}
 		return ret;
@@ -30,11 +30,11 @@ public class Sight extends OfferdableItem{
 		this.quota--;
 		u.update(this);
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
-	
+
 	public int getQuota() {
 		return this.quota;
 	}
@@ -43,8 +43,7 @@ public class Sight extends OfferdableItem{
 	public double getCost() {
 		return this.cost;
 	}
-	
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(cost, name, quota, time, type);
@@ -59,13 +58,15 @@ public class Sight extends OfferdableItem{
 		if (getClass() != obj.getClass())
 			return false;
 		Sight other = (Sight) obj;
-		return Double.doubleToLongBits(cost) == Double.doubleToLongBits(other.cost) && Objects.equals(name, other.name) && quota == other.quota
-				&& Double.doubleToLongBits(time) == Double.doubleToLongBits(other.time) && type == other.type;
+		return Double.doubleToLongBits(cost) == Double.doubleToLongBits(other.cost) && Objects.equals(name, other.name)
+				&& quota == other.quota && Double.doubleToLongBits(time) == Double.doubleToLongBits(other.time)
+				&& type == other.type;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Atraccion\n*Nombre = " + name + "\n*Cupo = " + quota + "\n*Tipo = " + type + "\n*Precio = $" + cost + ",\n*Duracion = " + time+" horas";
+		return "Atraccion\n*Nombre = " + name + "\n*Cupo = " + quota + "\n*Tipo = " + type + "\n*Precio = $" + cost
+				+ ",\n*Duracion = " + time + " horas";
 	}
 
 }

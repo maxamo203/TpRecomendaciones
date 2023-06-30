@@ -7,6 +7,6 @@ public class Main {
 		String rutaArchAtracciones = "archives\\Atracciones.in";
 		String rutaArchPromociones = "archives\\Paquetes.in";
 		String rutaSalida = "archives\\salidaUsuarios.out";
-		InterfazUsuario.mainProcess(rutaArchUsuarios,rutaArchAtracciones, rutaArchPromociones,rutaSalida);
+		InterfazUsuario.mainProcess(rutaArchUsuarios, rutaArchAtracciones, rutaArchPromociones, rutaSalida);
 	}
 }

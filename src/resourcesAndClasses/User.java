@@ -10,9 +10,9 @@ public class User {
 	private double time;
 	private double discountMade;
 	private Preferency myPref;
-	
-	private ArrayList<Sight>myList;
-	
+
+	private ArrayList<Sight> myList;
+
 	private double spentMoney;
 	private double spentTime;
 
@@ -21,71 +21,70 @@ public class User {
 		this.money = money;
 		this.time = time;
 		this.myPref = myPref;
-		
-		this.discountMade=0;
-		this.spentMoney =0; 
+
+		this.discountMade = 0;
+		this.spentMoney = 0;
 		this.spentTime = 0;
 		this.myList = new ArrayList<Sight>();
 	}
 
 	public void update(Sight ent) {
 		this.money -= ent.getCost();
-		this.spentMoney+=ent.getCost();
-		this.time-=ent.getTime();
-		this.spentTime+=ent.getTime();
+		this.spentMoney += ent.getCost();
+		this.time -= ent.getTime();
+		this.spentTime += ent.getTime();
 		this.myList.add(ent);
 	}
-	
+
 	public double getMoney() {
 		return this.money;
 	}
-	
+
 	public double getTime() {
 		return this.time;
 	}
-	
+
 	public Preferency getPref() {
 		return this.myPref;
 	}
-	
+
 	public double getSpentMoney() {
 		return this.spentMoney;
 	}
-	
+
 	public double getSpentTime() {
 		return this.spentTime;
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
-	
-	public ArrayList<Sight> getSights(){
+
+	public ArrayList<Sight> getSights() {
 		return this.myList;
 	}
-	
+
 	public String getStrMySights() {
-		String myListNames="Atracciones Compradas: ";
-		for(Sight s:this.myList) {
-			myListNames+=s.getName()+" ";
+		String myListNames = "Atracciones Compradas: ";
+		for (Sight s : this.myList) {
+			myListNames += s.getName() + " ";
 		}
 		return myListNames;
 	}
-	
+
 	public double getDiscountMade() {
 		return this.discountMade;
 	}
-	
+
 	public void makeDiscount(double discount) {
 		this.money += discount;
 		this.spentMoney -= discount;
-		this.discountMade+=discount;
+		this.discountMade += discount;
 	}
-	
-	
+
 	public boolean alreadyBought(Sight s) {
-		for(Sight s2: this.myList) {
-			if(s.equals(s2)) {
+		for (Sight s2 : this.myList) {
+			if (s.equals(s2)) {
 				return true;
 			}
 		}
@@ -112,11 +111,13 @@ public class User {
 				&& Double.doubleToLongBits(spentTime) == Double.doubleToLongBits(other.spentTime)
 				&& Double.doubleToLongBits(time) == Double.doubleToLongBits(other.time);
 	}
-	
+
 	@Override
 	public String toString() {
-		return "\n(!)Datos del usuario "+this.getName()+"\n*"+this.getStrMySights() +"\n*Dinero gastado: $"+this.getSpentMoney() +"\n*Tiempo invertido: "+this.getSpentTime() +" horas" +"\n*Descuento en las compras: $"+this.getDiscountMade()+"\n----------------------------------------------------------------------------\n";
+		return "\n(!)Datos del usuario " + this.getName() + "\n*" + this.getStrMySights() + "\n*Dinero gastado: $"
+				+ this.getSpentMoney() + "\n*Tiempo invertido: " + this.getSpentTime() + " horas"
+				+ "\n*Descuento en las compras: $" + this.getDiscountMade()
+				+ "\n----------------------------------------------------------------------------\n";
 	}
-	
-	
+
 }
