@@ -60,8 +60,8 @@ public class User {
 		return this.name;
 	}
 
-	public ArrayList<Sight> getSights() {
-		return this.myList;
+	public ArrayList<Sight> getSights()	{
+		return new ArrayList<Sight>(this.myList);
 	}
 
 	public String getStrMySights() {
