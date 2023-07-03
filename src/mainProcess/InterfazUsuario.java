@@ -3,31 +3,32 @@ package mainProcess;
 import java.util.Scanner;
 import resourcesAndClasses.*;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
+import java.util.List;
 
 public class InterfazUsuario {
 	public static void mainProcess(String rutaArchUsuarios, String rutaArchAtracciones, String rutaArchPromociones,
 			String rutaSalida) {
 
-		ArrayList<User> misUsuarios = FilesClass.ReadUsers(rutaArchUsuarios);
-		ArrayList<Sight> misAtracciones = FilesClass.ReadSights(rutaArchAtracciones);
-		ArrayList<Promotion> misPromociones = FilesClass.ReadPromotion(rutaArchPromociones, misAtracciones);
+		List<User> misUsuarios = FilesClass.ReadUsers(rutaArchUsuarios);
+		List<Sight> misAtracciones = FilesClass.ReadSights(rutaArchAtracciones);
+		List<Promotion> misPromociones = FilesClass.ReadPromotion(rutaArchPromociones, misAtracciones);
 
-		ArrayList<OfferdableItem> misOfferdablesCombate = new ArrayList<OfferdableItem>();
+		LinkedList<OfferdableItem> misOfferdablesCombate = new LinkedList<OfferdableItem>();
 		misOfferdablesCombate.addAll(misPromociones);
 		misOfferdablesCombate.addAll(misAtracciones);
 		Collections.sort(misOfferdablesCombate, new ComparatorPrefCostTime(Preferency.COMBATE));
 
-		ArrayList<OfferdableItem> misOfferdablesBanquete = new ArrayList<OfferdableItem>();
+		LinkedList<OfferdableItem> misOfferdablesBanquete = new LinkedList<OfferdableItem>();
 		misOfferdablesBanquete.addAll(misOfferdablesCombate);
 		Collections.sort(misOfferdablesBanquete, new ComparatorPrefCostTime(Preferency.BANQUETE));
 
-		ArrayList<OfferdableItem> misOfferdablesAventura = new ArrayList<OfferdableItem>();
+		LinkedList<OfferdableItem> misOfferdablesAventura = new LinkedList<OfferdableItem>();
 		misOfferdablesAventura.addAll(misOfferdablesCombate);
 		Collections.sort(misOfferdablesAventura, new ComparatorPrefCostTime(Preferency.AVENTURA));
 
-		ArrayList<OfferdableItem> misOfferdables = null;
+		LinkedList<OfferdableItem> misOfferdables = null;
 		System.out.println("	Bienvenido/a al Dragon World! ");
 		System.out.println("----------------------------------------------------------------------------");
 		try (Scanner teclado = new Scanner(System.in)) {

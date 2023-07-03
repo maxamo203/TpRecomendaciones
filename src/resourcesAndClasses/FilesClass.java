@@ -4,14 +4,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.LinkedList;
+
+import java.util.List;
 
 public class FilesClass {
-	static Scanner scanner = null;
-
+	 
 	// READ THE ATTRACTION LIST
-	public static ArrayList<Sight> ReadSights(String path) {
-		ArrayList<Sight> myAtraccionList = new ArrayList<Sight>();
+	public static List<Sight> ReadSights(String path) {
+		LinkedList<Sight> myAtraccionList = new LinkedList<Sight>();
+		Scanner scanner = null;
 		try {
 			File file = new File(path);
 			scanner = new Scanner(file);
@@ -22,10 +24,16 @@ public class FilesClass {
 				Double time = scanner.nextDouble();
 				int quota = scanner.nextInt();
 				int intPreferency = scanner.nextInt();
-				Preferency preferency;
+				Preferency preferency = null;
 
 				// TURN THE NUMBER INTO A PREFERENCY
-				switch (intPreferency) {
+				if(Preferency.asignacionPref.containsKey(intPreferency)){
+					preferency = Preferency.asignacionPref.get(intPreferency);
+				}
+				
+				
+				/*
+				 * 			switch (intPreferency) {
 				case 1:
 					preferency = Preferency.COMBATE;
 					break;
@@ -38,6 +46,8 @@ public class FilesClass {
 				default:
 					preferency = null;
 				}
+				 * */
+				
 
 				Sight data = new Sight(name, price, time, quota, preferency);
 				myAtraccionList.add(data);
@@ -53,9 +63,9 @@ public class FilesClass {
 		return myAtraccionList;
 	}
 
-	public static ArrayList<User> ReadUsers(String path) {
-		ArrayList<User> myUserList = new ArrayList<User>();
-
+	public static List<User> ReadUsers(String path) {
+		LinkedList<User> myUserList = new LinkedList<User>();
+		Scanner scanner = null;
 		try {
 			File file = new File(path);
 			scanner = new Scanner(file);
@@ -65,21 +75,11 @@ public class FilesClass {
 				Double totalMount = scanner.nextDouble();
 				Double totalTime = scanner.nextDouble();
 				int intPreferency = scanner.nextInt();
-				Preferency preferency;
+				Preferency preferency = null;
 
 				// TURN THE NUMBER INTO A PREFERENCY
-				switch (intPreferency) {
-				case 1:
-					preferency = Preferency.COMBATE;
-					break;
-				case 2:
-					preferency = Preferency.BANQUETE;
-					break;
-				case 3:
-					preferency = Preferency.AVENTURA;
-					break;
-				default:
-					preferency = null;
+				if(Preferency.asignacionPref.containsKey(intPreferency)){
+					preferency = Preferency.asignacionPref.get(intPreferency);
 				}
 
 				User data = new User(name, totalMount, totalTime, preferency);
@@ -97,9 +97,9 @@ public class FilesClass {
 		return myUserList;
 	}
 
-	public static ArrayList<Promotion> ReadPromotion(String path, ArrayList<Sight> MyAtraccionList) {
-		ArrayList<Promotion> myPromotionList = new ArrayList<Promotion>();
-
+	public static List<Promotion> ReadPromotion(String path, List<Sight> MyAtraccionList) {
+		LinkedList<Promotion> myPromotionList = new LinkedList<Promotion>();
+		Scanner scanner = null;
 		try {
 			File file = new File(path);
 			scanner = new Scanner(file);
@@ -109,21 +109,11 @@ public class FilesClass {
 			while (scanner.hasNext()) {
 
 				int intPreferency = scanner.nextInt();
-				Preferency preferency;
+				Preferency preferency = null;
 
 				// TURN THE NUMBER INTO A PREFERENCY
-				switch (intPreferency) {
-				case 1:
-					preferency = Preferency.COMBATE;
-					break;
-				case 2:
-					preferency = Preferency.BANQUETE;
-					break;
-				case 3:
-					preferency = Preferency.AVENTURA;
-					break;
-				default:
-					preferency = null;
+				if(Preferency.asignacionPref.containsKey(intPreferency)){
+					preferency = Preferency.asignacionPref.get(intPreferency);
 				}
 
 				String type = scanner.next();
@@ -176,7 +166,7 @@ public class FilesClass {
 		return myPromotionList;
 	}
 
-	public static void cargarArchivoSalida(ArrayList<User> misUsuarios, String rutaSalida) {
+	public static void cargarArchivoSalida(List<User> misUsuarios, String rutaSalida) {
 		File archivo = new File(rutaSalida);
 		try {
 			PrintWriter salida = new PrintWriter(archivo);

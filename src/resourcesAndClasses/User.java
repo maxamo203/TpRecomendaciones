@@ -1,7 +1,8 @@
 package resourcesAndClasses;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.List;
 
 public class User {
 
@@ -11,7 +12,7 @@ public class User {
 	private double discountMade;
 	private Preferency myPref;
 
-	private ArrayList<Sight> myList;
+	private LinkedList<Sight> myList;
 
 	private double spentMoney;
 	private double spentTime;
@@ -25,7 +26,7 @@ public class User {
 		this.discountMade = 0;
 		this.spentMoney = 0;
 		this.spentTime = 0;
-		this.myList = new ArrayList<Sight>();
+		this.myList = new LinkedList<Sight>();
 	}
 
 	public void update(Sight ent) {
@@ -60,8 +61,8 @@ public class User {
 		return this.name;
 	}
 
-	public ArrayList<Sight> getSights()	{
-		return new ArrayList<Sight>(this.myList);
+	public List<Sight> getSights()	{
+		return new LinkedList<Sight>(this.myList);
 	}
 
 	public String getStrMySights() {

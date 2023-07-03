@@ -2,7 +2,7 @@ package TestPackage;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
 
 import org.junit.Before;
@@ -14,7 +14,7 @@ import org.junit.Test;
 public class TotalizadorComprasTest {
 
 	User usuario;
-	ArrayList<Sight> atracciones = new ArrayList<>();
+	LinkedList<Sight> atracciones = new LinkedList<>();
 
 	@Before
 	public void setup() {

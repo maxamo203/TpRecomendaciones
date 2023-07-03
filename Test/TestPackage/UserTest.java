@@ -3,7 +3,7 @@ package TestPackage;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -52,7 +52,7 @@ public class UserTest {
 		double expectedSpentMoney = 200;
 		double expectedTime = 8;
 		double expectedSpentTime = 1;
-		ArrayList<Sight> expectedSights = new ArrayList<Sight>();
+		LinkedList<Sight> expectedSights = new LinkedList<Sight>();
 		expectedSights.add(atraccion);
 		user.update(atraccion);
 		assertEquals(expectedMoney, user.getMoney(), 0.1);

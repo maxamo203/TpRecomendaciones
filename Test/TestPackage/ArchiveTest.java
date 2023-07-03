@@ -1,15 +1,16 @@
 package TestPackage;
 
 import resourcesAndClasses.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.List;
 
 public class ArchiveTest {
-	ArrayList<Sight> myAtraccionListTest = new ArrayList<Sight>();
-	ArrayList<Promotion> MyPromotionListTest = new ArrayList<Promotion>();
-	ArrayList<User> UserListTest = new ArrayList<User>();
+	LinkedList<Sight> myAtraccionListTest = new LinkedList<Sight>();
+	LinkedList<Promotion> MyPromotionListTest = new LinkedList<Promotion>();
+	LinkedList<User> UserListTest = new LinkedList<User>();
 
 	@Before
 	public void setup() {
@@ -77,19 +78,19 @@ public class ArchiveTest {
 
 	@Test
 	public void AttractionTest() {
-		ArrayList<Sight> myAtraccionList = FilesClass.ReadSights("archivesTest/Atracciones.in");
+		List<Sight> myAtraccionList = FilesClass.ReadSights("archivesTest/Atracciones.in");
 		Assert.assertEquals(myAtraccionListTest, myAtraccionList);
 	}
 
 	@Test
 	public void testUser() {
-		ArrayList<User> UserList = FilesClass.ReadUsers("archivesTest/Usuarios.in");
+		List<User> UserList = FilesClass.ReadUsers("archivesTest/Usuarios.in");
 		Assert.assertEquals(UserListTest, UserList);
 	}
 
 	@Test
 	public void testPromotion() {
-		ArrayList<Promotion> MyPromotionList = FilesClass.ReadPromotion("archivesTest/Paquetes.in",
+		List<Promotion> MyPromotionList = FilesClass.ReadPromotion("archivesTest/Paquetes.in",
 				myAtraccionListTest);
 		Assert.assertEquals(MyPromotionListTest, MyPromotionList);
 	}

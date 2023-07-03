@@ -1,6 +1,6 @@
 package TestPackage;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
 
 import org.junit.Assert;
@@ -11,15 +11,15 @@ import resourcesAndClasses.*;
 public class SelectorDePreferenciasTest {
 
 	User usuario;
-	ArrayList<Sight> ofertasParaUsuario = new ArrayList<>();
-	ArrayList<Sight> ordenadaCombate = new ArrayList<>();
-	ArrayList<Sight> ordenadaAventura = new ArrayList<>();
-	ArrayList<Sight> ordenadaBanquete = new ArrayList<>();
+	LinkedList<Sight> ofertasParaUsuario = new LinkedList<>();
+	LinkedList<Sight> ordenadaCombate = new LinkedList<>();
+	LinkedList<Sight> ordenadaAventura = new LinkedList<>();
+	LinkedList<Sight> ordenadaBanquete = new LinkedList<>();
 
-	ArrayList<OfferdableItem> ofertasParaUsuariosConPromos = new ArrayList<>();
-	ArrayList<OfferdableItem> ordenadaConPromosCombate = new ArrayList<>();
-	ArrayList<OfferdableItem> ordenadaConPromosAventura = new ArrayList<>();
-	ArrayList<OfferdableItem> ordenadaConPromosBanquete = new ArrayList<>();
+	LinkedList<OfferdableItem> ofertasParaUsuariosConPromos = new LinkedList<>();
+	LinkedList<OfferdableItem> ordenadaConPromosCombate = new LinkedList<>();
+	LinkedList<OfferdableItem> ordenadaConPromosAventura = new LinkedList<>();
+	LinkedList<OfferdableItem> ordenadaConPromosBanquete = new LinkedList<>();
 
 	@Before
 	public void setup() {
@@ -54,7 +54,7 @@ public class SelectorDePreferenciasTest {
 		ordenadaBanquete.add(attraction4);
 		ordenadaBanquete.add(attraction1);
 
-		ArrayList<Sight> atracciones = new ArrayList<>();
+		LinkedList<Sight> atracciones = new LinkedList<>();
 		atracciones.addAll(ofertasParaUsuario);
 		ofertasParaUsuariosConPromos.addAll(ofertasParaUsuario);
 

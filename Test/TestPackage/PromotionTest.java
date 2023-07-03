@@ -2,7 +2,7 @@ package TestPackage;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import resourcesAndClasses.*;
 
@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class PromotionTest {
 
-	ArrayList<Sight> miListaDeAtracciones;
+	LinkedList<Sight> miListaDeAtracciones;
 
 	PromotionPercentual perAventurapromotion;
 	PromotionAbsolute absAventuraPromotion;
@@ -30,7 +30,7 @@ public class PromotionTest {
 		Sight miAtraccion7 = new Sight("Marte", 500, 1, 100, Preferency.COMBATE);
 		Sight miAtraccion8 = new Sight("Inframundo", 700, 1, 100, Preferency.COMBATE);
 
-		miListaDeAtracciones = new ArrayList<Sight>();
+		miListaDeAtracciones = new LinkedList<Sight>();
 
 		miListaDeAtracciones.add(miAtraccion);
 		miListaDeAtracciones.add(miAtraccion2);
@@ -68,6 +68,12 @@ public class PromotionTest {
 	@Test
 	public void Discount() {
 		// GetDiscount
+		perCombatePromotion = new PromotionPercentual(Preferency.COMBATE, 20);
+		perCombatePromotion.loadSight("Marte", miListaDeAtracciones);
+		perCombatePromotion.loadSight("Namekusei", miListaDeAtracciones);
+
+		
+		
 		assertEquals(140.0, perCombatePromotion.getDiscount(), 0.1);
 		assertEquals(120.0, perAventurapromotion.getDiscount(), 0.1);
 		assertEquals(300.0, absAventuraPromotion.getDiscount(), 0.1);

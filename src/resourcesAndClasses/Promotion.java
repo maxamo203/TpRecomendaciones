@@ -1,20 +1,21 @@
 package resourcesAndClasses;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.List;
 
 public abstract class Promotion extends OfferdableItem {
 
-	protected ArrayList<Sight> mySights;
+	protected LinkedList<Sight> mySights;
 
 	public Promotion(Preferency type) {
 		super(type);
-		this.mySights = new ArrayList<Sight>();
+		this.mySights = new LinkedList<Sight>();
 		this.cost = 0;
 		this.time = 0;
 	}
 
-	public void loadSight(String sightName, ArrayList<Sight> sights) {
+	public void loadSight(String sightName, List<Sight> sights) {
 		for (Sight s : sights) {
 			if (s.getName().equals(sightName)) {
 				this.mySights.add(s);

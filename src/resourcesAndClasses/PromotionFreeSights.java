@@ -1,19 +1,19 @@
 package resourcesAndClasses;
-
-import java.util.ArrayList;
+import java.util.List;
+import java.util.LinkedList;
 
 public class PromotionFreeSights extends Promotion {
-	private ArrayList<Sight> freeSights;
+	private LinkedList<Sight> freeSights;
 
 	private double discount;
 
 	public PromotionFreeSights(Preferency type) {
 		super(type);
-		this.freeSights = new ArrayList<Sight>();
+		this.freeSights = new LinkedList<Sight>();
 		this.discount = 0;
 	}
 
-	public void addFreeSight(String s, ArrayList<Sight> sights) {
+	public void addFreeSight(String s, List<Sight> sights) {
 		for (Sight s2 : sights) {
 			if (s.equals(s2.getName())) {
 				this.freeSights.add(s2);
