@@ -10,11 +10,17 @@ Nuestro trabajo esta ambientado en el universo de Dragon Ball.
 
 *Integrantes de nuestro Equipo:
 
-Vallejos, Franco Nicolas
-Polito, Thiago Martin
-Módola, Lautaro Leonel
-Martins Louro, Luciano Agustín
-Bosch, Maximo Augusto
-Barbaro, Leonardo Domingo
+•Vallejos, Franco Nicolas
+
+•Polito, Thiago Martin
+
+•Módola, Lautaro Leonel
+
+•Martins Louro, Luciano Agustín
+
+•Bosch, Maximo Augusto
+
+•Barbaro, Leonardo Domingo
+
 
 Para hacer uso del programa abrir el proyecto en eclipse y ejecutarlo por consola como una aplicacion java.
